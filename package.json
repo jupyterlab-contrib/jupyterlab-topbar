@@ -1,0 +1,49 @@
+{
+  "name": "jupyterlab-topbar",
+  "version": "0.1.0",
+  "description": "JupyterLab extension to monitor resource usage",
+  "keywords": [
+    "jupyter",
+    "jupyterlab",
+    "jupyterlab-extension"
+  ],
+  "homepage": "https://github.com/jtpio/jupyterlab-topbar",
+  "bugs": {
+    "url": "https://github.com/jtpio/jupyterlab-topbar"
+  },
+  "license": "BSD-3-Clause",
+  "author": "",
+  "files": [
+    "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
+    "style/**/*.{css,eot,gif,html,jpg,json,png,svg,woff2,ttf}",
+    "schema/*.json"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jtpio/jupyterlab-topbar.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf lib",
+    "prepare": "npm run clean && npm run build",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@jupyterlab/application": "^0.19.1",
+    "@jupyterlab/apputils": "^0.19.0",
+    "@jupyterlab/coreutils": "^2.2.1",
+    "@jupyterlab/mainmenu": "^0.8.1",
+    "@jupyterlab/services": "^3.2.1",
+    "react": "~16.4.2"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.1",
+    "typescript": "~3.1.1"
+  },
+  "jupyterlab": {
+    "extension": true,
+    "schemaDir": "schema"
+  }
+}

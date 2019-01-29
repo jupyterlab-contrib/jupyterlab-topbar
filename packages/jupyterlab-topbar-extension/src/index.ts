@@ -19,7 +19,7 @@ import '../style/index.css';
  * Initialization data for the jupyterlab-topbar extension.
  */
 const extension: JupyterLabPlugin<ITopBar> = {
-  id: 'jupyterlab-topbar:plugin',
+  id: 'jupyterlab-topbar-extension:plugin',
   autoStart: true,
   requires: [
     // required to place the item to the right of the existing one

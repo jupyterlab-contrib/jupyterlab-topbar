@@ -7,7 +7,7 @@
     "updated": "lerna updated"
   },
   "devDependencies": {
-    "lerna": "^3.10.7"
+    "lerna": "^3.2.1"
   },
   "workspaces": [
     "packages/*"

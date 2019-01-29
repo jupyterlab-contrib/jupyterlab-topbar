@@ -24,9 +24,10 @@
     "url": "https://github.com/jtpio/jupyterlab-topbar.git"
   },
   "scripts": {
-    "build": "tsc",
-    "clean": "rimraf lib",
-    "prepare": "npm run clean && npm run build",
+    "clean:src": "rimraf lib",
+    "clean": "npm run clean:src",
+    "build:src": "tsc",
+    "build": "npm run build:src",
     "watch": "tsc -w"
   },
   "dependencies": {

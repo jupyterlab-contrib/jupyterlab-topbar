@@ -13,4 +13,4 @@ yarn install
 yarn run build
 
 jupyter labextension link ./packages/jupyterlab-topbar
-jupyter labextension link ./packages/jupyterlab-topbar-extension
+jupyter labextension install ./packages/jupyterlab-topbar-extension

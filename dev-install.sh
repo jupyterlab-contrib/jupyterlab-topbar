@@ -12,5 +12,5 @@ echo -n "Installing and building all yarn packages"
 yarn install
 yarn run build
 
-jupyter labextension link ./packages/jupyterlab-topbar
+jupyter labextension link ./packages/jupyterlab-topbar --no-build
 jupyter labextension install ./packages/jupyterlab-topbar-extension

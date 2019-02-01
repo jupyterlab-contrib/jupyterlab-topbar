@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-conda env update
-source activate jupyterlab-topbar
-
 set -e
 
 yarn -v

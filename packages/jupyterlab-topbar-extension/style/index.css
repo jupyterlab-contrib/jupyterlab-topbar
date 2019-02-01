@@ -1,8 +1,6 @@
 .jp-TopBar {
     display: flex;
     flex-grow: 1;
-    padding-right: 10px;
-    background-color: rgb(255, 0, 0);
 }
 
 .jp-TopBarItem {

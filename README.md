@@ -18,7 +18,7 @@ jupyter labextension install jupyterlab-topbar-extension
 jupyter labextension install jupyterlab-system-monitor
 ```
 
-## Dev setup
+## Development
 
 ```bash
 conda create -n jupyterlab-topbar -c conda-forge python=3.7 nodejs yarn jupyterlab

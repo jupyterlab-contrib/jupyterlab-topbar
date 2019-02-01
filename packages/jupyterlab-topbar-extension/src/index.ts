@@ -3,17 +3,12 @@ import {
 } from '@jupyterlab/application';
 
 import {
-  ISettingRegistry
-} from '@jupyterlab/coreutils';
-
-import {
   IMainMenu,
 } from '@jupyterlab/mainmenu';
 
 import { ITopBar, TopBar } from 'jupyterlab-topbar';
 
 import '../style/index.css';
-
 
 /**
  * Initialization data for the jupyterlab-topbar extension.
@@ -29,16 +24,16 @@ const extension: JupyterLabPlugin<ITopBar> = {
   activate: (
     app: JupyterLab,
     menu: IMainMenu,
-    settingsRegistry: ISettingRegistry,
   ): ITopBar => {
 
     let topBar = new TopBar();
     topBar.id = 'jp-TopBar';
     topBar.addClass('jp-TopBar');
+    topBar.addItem('spacer', TopBar.createSpacerItem());
 
     app.shell.addToTopArea(topBar);
 
-    console.log(extension.id, 'activated');
+    console.log('jupyterlab-topbar-extension activated');
 
     return topBar;
   }

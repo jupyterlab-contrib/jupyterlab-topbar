@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-echo -n "Checking yarn... "
+conda env update
+source activate jupyterlab-topbar
+
+set -e
+
 yarn -v
 pip --version
 jupyter lab --version 2>/dev/null
 
-# All following commands must run successfully
-set -e
-
-echo -n "Installing and building all yarn packages"
 yarn install
 yarn run build
 

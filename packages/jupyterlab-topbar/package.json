@@ -1,7 +1,7 @@
 {
   "name": "jupyterlab-topbar",
   "version": "0.1.0",
-  "description": "JupyterLab Top Bar",
+  "description": "JupyterLab Top Bar interface",
   "keywords": [
     "jupyter",
     "jupyterlab",
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@jupyterlab/application": "^0.19.1",
+    "@jupyterlab/apputils": "^0.19.1",
     "@phosphor/coreutils": "^1.3.0"
   },
   "devDependencies": {

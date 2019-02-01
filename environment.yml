@@ -1,0 +1,10 @@
+name: jupyterlab-topbar
+channels:
+- conda-forge
+dependencies:
+- jupyterlab=0.35
+- python=3.7
+- nodejs=10
+- yarn=1.12
+- pip:
+  - nbresuse==0.3.0

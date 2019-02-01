@@ -3,14 +3,20 @@ import '../style/index.css';
 import { Token } from '@phosphor/coreutils';
 import { Widget } from '@phosphor/widgets';
 
+import { Toolbar } from '@jupyterlab/apputils';
+
 export const ITopBar = new Token<ITopBar>('jupyterlab-topbar:ITopBar');
 
 export interface ITopBar {
-    addItem(item: Widget): void;
+    addItem(name: string, item: Widget): boolean;
 }
 
-export class TopBar extends Widget implements ITopBar {
-    addItem(item: Widget) {
-        console.log("Add an item");
-    }
+export class TopBar extends Toolbar<Widget> implements ITopBar {
+
+}
+
+export namespace TopBar {
+  export function createSpacerItem(): Widget {
+    return Toolbar.createSpacerItem();
+  }
 }

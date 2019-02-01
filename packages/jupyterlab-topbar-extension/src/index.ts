@@ -33,8 +33,6 @@ const extension: JupyterLabPlugin<ITopBar> = {
 
     app.shell.addToTopArea(topBar);
 
-    console.log('jupyterlab-topbar-extension activated');
-
     return topBar;
   }
 };

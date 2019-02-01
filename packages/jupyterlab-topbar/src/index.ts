@@ -1,9 +1,9 @@
-import '../style/index.css';
-
 import { Token } from '@phosphor/coreutils';
 import { Widget } from '@phosphor/widgets';
 
 import { Toolbar } from '@jupyterlab/apputils';
+
+import '../style/index.css';
 
 export const ITopBar = new Token<ITopBar>('jupyterlab-topbar:ITopBar');
 

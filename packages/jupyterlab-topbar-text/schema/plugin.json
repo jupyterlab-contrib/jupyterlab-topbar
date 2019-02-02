@@ -1,0 +1,17 @@
+{
+  "jupyter.lab.setting-icon-class": "jp-EditIcon",
+  "jupyter.lab.setting-icon-label": "Top Bar Text",
+  "title": "Top Bar Text",
+  "description": "Top Bar Text",
+  "properties": {
+    "text": {
+      "title": "Text",
+      "description": "Text to display",
+      "default": "Change Me",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "type": "object"
+}
+

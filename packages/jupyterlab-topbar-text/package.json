@@ -1,6 +1,6 @@
 {
-  "name": "jupyterlab-custom-header",
-  "version": "0.1.0",
+  "name": "jupyterlab-topbar-text",
+  "version": "0.1.1",
   "description": "JupyterLab extension to display arbitrary text in the top bar",
   "keywords": [
     "jupyter",
@@ -15,7 +15,8 @@
   "author": "Jeremy Tuloup",
   "files": [
     "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
-    "style/**/*.{css,eot,gif,html,jpg,json,png,svg,woff2,ttf}"
+    "style/**/*.{css,eot,gif,html,jpg,json,png,svg,woff2,ttf}",
+    "schema/*.json"
   ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -32,14 +33,16 @@
   "dependencies": {
     "@jupyterlab/application": "^0.19.1",
     "@jupyterlab/apputils": "^0.19.1",
+    "@jupyterlab/coreutils": "^2.2.1",
     "react": "~16.4.2",
-    "jupyterlab-topbar": "^0.1.0"
+    "jupyterlab-topbar": "^0.1.1"
   },
   "devDependencies": {
     "rimraf": "^2.6.1",
     "typescript": "~3.1.1"
   },
   "jupyterlab": {
-    "extension": true
+    "extension": true,
+    "schemaDir": "schema"
   }
 }

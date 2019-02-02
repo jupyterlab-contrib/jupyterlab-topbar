@@ -17,10 +17,10 @@ import {
 import '../style/index.css';
 
 /**
- * Initialization data for the jupyterlab-custom-header extension.
+ * Initialization data for the jupyterlab-topbar-text extension.
  */
 const extension: JupyterLabPlugin<void> = {
-  id: 'jupyterlab-custom-header:plugin',
+  id: 'jupyterlab-topbar-text:plugin',
   autoStart: true,
   requires: [
     ISettingRegistry,

@@ -1,4 +1,4 @@
-# jupyterlab-custom-header
+# jupyterlab-topbar-text
 
 JupyterLab extension to display arbitrary text in the top bar
 
@@ -10,7 +10,7 @@ JupyterLab extension to display arbitrary text in the top bar
 ## Installation
 
 ```bash
-jupyter labextension install jupyterlab-custom-header
+jupyter labextension install jupyterlab-topbar-text
 ```
 
 ## Development

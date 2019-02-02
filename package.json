@@ -4,7 +4,8 @@
     "clean": "lerna run clean",
     "build": "lerna run build",
     "lint": "lerna run lint",
-    "updated": "lerna updated"
+    "updated": "lerna updated",
+    "publish": "yarn run clean && yarn run build && lerna publish -m \"Publish npm packages\""
   },
   "devDependencies": {
     "lerna": "^3.10.7"

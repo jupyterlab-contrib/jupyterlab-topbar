@@ -3,8 +3,19 @@
     flex-grow: 1 !important;
 }
 
-.jp-TopBar-item {
+.jp-TopBar > .jp-TopBar-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-left: var(--jp-border-width) solid var(--jp-border-color0);
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.jp-TopBar > .jp-Toolbar-spacer {
+    border: none;
+}
+
+.jp-Toolbar.jp-TopBar {
+    box-shadow: unset;
 }

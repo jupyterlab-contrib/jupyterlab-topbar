@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab-topbar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "JupyterLab Top Bar interface",
   "keywords": [
     "jupyter",

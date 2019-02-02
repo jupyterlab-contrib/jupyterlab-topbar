@@ -9,6 +9,12 @@ Inspired by Gnome Shell Top Bar indicators.
 
 ![screenshot](./doc/screenshot.png)
 
+## Try it online
+
+Try the extensions in your browser with Binder:
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jtpio/jupyterlab-topbar/master?urlpath=lab)
+
 ## Installation
 
 Requires JupyterLab 0.35.4

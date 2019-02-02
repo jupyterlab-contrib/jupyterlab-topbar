@@ -8,8 +8,8 @@
     flex-direction: column;
     justify-content: center;
     border-left: var(--jp-border-width) solid var(--jp-border-color0);
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
 }
 
 .jp-TopBar > .jp-Toolbar-spacer {

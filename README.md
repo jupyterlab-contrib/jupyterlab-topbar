@@ -1,7 +1,7 @@
 JupyterLab Top Bar
 ==================
 
-This is a monorepo to experiment with the top bar space in JupyterLab.
+Monorepo to experiment with the top bar space in JupyterLab.
 
 Similar to the [status bar](https://github.com/jupyterlab/jupyterlab/tree/master/packages/statusbar-extension), the top bar can be used to place a few indicators and optimize the overall space.
 
@@ -20,15 +20,21 @@ Try the extensions in your browser with Binder:
 Requires JupyterLab 0.35.4
 
 ```bash
+# container extension
 jupyter labextension install jupyterlab-topbar-extension
+
+# system metrics
 jupyter labextension install jupyterlab-system-monitor
 pip install nbresuse
+
+# custom text in the top bar
+jupyter labextension install jupyterlab-topbar-text
 ```
 
 ## Development
 
 ```bash
-conda create -n jupyterlab-topbar -c conda-forge python=3.7 nodejs yarn jupyterlab
+conda env create
 conda activate jupyterlab-topbar
 
 ./dev-install.sh

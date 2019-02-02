@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab-topbar-extension",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "JupyterLab extension to expose the top bar space",
   "keywords": [
     "jupyter",

@@ -16,6 +16,7 @@ Requires JupyterLab 0.35.4
 ```bash
 jupyter labextension install jupyterlab-topbar-extension
 jupyter labextension install jupyterlab-system-monitor
+pip install nbresuse
 ```
 
 ## Development

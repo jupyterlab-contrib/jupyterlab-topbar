@@ -1,0 +1,17 @@
+{
+  "jupyter.lab.setting-icon-class": "jp-EditIcon",
+  "jupyter.lab.setting-icon-label": "Custom Text",
+  "title": "Custom Text",
+  "description": "Custom Text",
+  "properties": {
+    "text": {
+      "title": "Text",
+      "description": "Text to display",
+      "default": "",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "type": "object"
+}
+

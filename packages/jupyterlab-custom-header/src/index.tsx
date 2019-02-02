@@ -2,6 +2,8 @@ import {
   JupyterLab, JupyterLabPlugin
 } from '@jupyterlab/application';
 
+import { ISettingRegistry } from '@jupyterlab/coreutils';
+
 import React from 'react';
 
 import {
@@ -18,18 +20,21 @@ import '../style/index.css';
  * Initialization data for the jupyterlab-custom-header extension.
  */
 const extension: JupyterLabPlugin<void> = {
-  id: 'jupyterlab-custom-header',
+  id: 'jupyterlab-custom-header:plugin',
   autoStart: true,
   requires: [
+    ISettingRegistry,
     ITopBar,
   ],
-  activate: (
+  activate: async (
     app: JupyterLab,
+    settingsRegistry: ISettingRegistry,
     topBar: ITopBar,
   ) => {
-    // TODO: read from settings
-    let text = new ReactElementWidget(<div>Custom Text Here</div>);
-    topBar.addItem('custom-header', text);
+    const settings = await settingsRegistry.load(extension.id);
+    let text = settings.get('text').composite as string;
+    let textWidget = new ReactElementWidget(<div>{text}</div>);
+    topBar.addItem('custom-header', textWidget);
   }
 };
 

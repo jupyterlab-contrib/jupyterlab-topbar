@@ -13,7 +13,7 @@ Inspired by Gnome Shell Top Bar indicators.
 
 Try the extensions in your browser with Binder:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jtpio/jupyterlab-topbar/master?urlpath=lab)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jtpio/jupyterlab-topbar/stable?urlpath=lab)
 
 ## Installation
 

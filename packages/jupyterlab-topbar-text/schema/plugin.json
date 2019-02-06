@@ -7,7 +7,7 @@
     "text": {
       "title": "Text",
       "description": "Text to display",
-      "default": "Change Me",
+      "default": "Hi There 👋",
       "type": "string"
     }
   },

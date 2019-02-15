@@ -10,6 +10,9 @@
   "devDependencies": {
     "lerna": "^3.10.7"
   },
+  "resolutions": {
+    "@types/react": "16.8.1"
+  },
   "workspaces": [
     "packages/*"
   ]

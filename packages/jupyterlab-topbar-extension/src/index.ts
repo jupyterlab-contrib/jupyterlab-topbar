@@ -2,6 +2,8 @@ import { JupyterLab, JupyterLabPlugin } from "@jupyterlab/application";
 
 import { IMainMenu } from "@jupyterlab/mainmenu";
 
+import { ICommandPalette } from "@jupyterlab/apputils";
+
 import { ISettingRegistry } from "@jupyterlab/coreutils";
 
 import { ITopBar, TopBar } from "jupyterlab-topbar";
@@ -25,11 +27,12 @@ const extension: JupyterLabPlugin<ITopBar> = {
     // required to place the item to the right of the existing one
     IMainMenu
   ],
-  optional: [ISettingRegistry],
+  optional: [ICommandPalette, ISettingRegistry],
   provides: ITopBar,
   activate: (
     app: JupyterLab,
     menu: IMainMenu,
+    palette: ICommandPalette,
     settingRegistry: ISettingRegistry
   ): ITopBar => {
     let topBar = new TopBar();
@@ -38,21 +41,22 @@ const extension: JupyterLabPlugin<ITopBar> = {
     topBar.addItem("spacer", TopBar.createSpacerItem());
 
     app.commands.addCommand(CommandIDs.toggle, {
-      label: 'Show Top Bar',
+      label: "Show Top Bar",
       execute: (args: any) => {
         topBar.setHidden(topBar.isVisible);
         if (settingRegistry) {
-          settingRegistry.set(
-            extension.id,
-            'visible',
-            topBar.isVisible
-          );
+          settingRegistry.set(extension.id, "visible", topBar.isVisible);
         }
       },
       isToggled: () => topBar.isVisible
     });
 
     menu.viewMenu.addGroup([{ command: CommandIDs.toggle }], 2);
+
+    const category = "Top Bar";
+    if (palette) {
+      palette.addItem({ command: CommandIDs.toggle, category });
+    }
 
     if (settingRegistry) {
       const updateSettings = (settings: ISettingRegistry.ISettings): void => {

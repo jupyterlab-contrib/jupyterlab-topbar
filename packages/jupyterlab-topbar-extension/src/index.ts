@@ -23,11 +23,7 @@ namespace CommandIDs {
 const extension: JupyterLabPlugin<ITopBar> = {
   id: "jupyterlab-topbar-extension:plugin",
   autoStart: true,
-  requires: [
-    // required to place the item to the right of the existing one
-    IMainMenu
-  ],
-  optional: [ICommandPalette, ISettingRegistry],
+  optional: [IMainMenu, ICommandPalette, ISettingRegistry],
   provides: ITopBar,
   activate: (
     app: JupyterLab,
@@ -51,7 +47,9 @@ const extension: JupyterLabPlugin<ITopBar> = {
       isToggled: () => topBar.isVisible
     });
 
-    menu.viewMenu.addGroup([{ command: CommandIDs.toggle }], 2);
+    if (menu) {
+      menu.viewMenu.addGroup([{ command: CommandIDs.toggle }], 2);
+    }
 
     const category = "Top Bar";
     if (palette) {

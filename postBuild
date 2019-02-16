@@ -1,5 +1,5 @@
 set -xe
 
-jupyter labextension install jupyterlab-topbar-extension@0.1.5 \
-                             jupyterlab-system-monitor@0.1.7 \
+jupyter labextension install jupyterlab-topbar-extension@0.2.0 \
+                             jupyterlab-system-monitor@0.2.3 \
                              jupyterlab-topbar-text@0.1.2

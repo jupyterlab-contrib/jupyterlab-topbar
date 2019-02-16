@@ -1,0 +1,17 @@
+{
+  "jupyter.lab.setting-icon-class": "jp-",
+  "jupyter.lab.setting-icon-label": "Top Bar Extension",
+  "title": "Top Bar Extension",
+  "description": "Top Bar Extension",
+  "properties": {
+    "visible": {
+      "title": "Top Bar Visibility",
+      "description": "Whether the top bar is visible or not",
+      "default": true,
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "type": "object"
+}
+

@@ -1,6 +1,6 @@
 import { JupyterLab, JupyterLabPlugin } from "@jupyterlab/application";
 
-import { Dialog, showDialog } from "@jupyterlab/apputils";
+import { Dialog, ICommandPalette, showDialog } from "@jupyterlab/apputils";
 
 import { ISettingRegistry, PathExt } from "@jupyterlab/coreutils";
 
@@ -25,9 +25,10 @@ namespace CommandIDs {
 const extension: JupyterLabPlugin<void> = {
   id: "jupyterlab-topbar-text:plugin",
   autoStart: true,
-  requires: [ISettingRegistry, ITopBar],
+  requires: [ICommandPalette, ISettingRegistry, ITopBar],
   activate: async (
     app: JupyterLab,
+    palette: ICommandPalette,
     settingsRegistry: ISettingRegistry,
     topBar: ITopBar
   ) => {
@@ -40,10 +41,27 @@ const extension: JupyterLabPlugin<void> = {
     textWidget.addClass(TOPBAR_TEXT);
     topBar.addItem("custom-header", textWidget);
 
-    const buttons = [
-      Dialog.cancelButton(),
-      Dialog.okButton({ label: "Save" })
-    ];
+    function showUpdateTextDialog() {
+      let oldText = settings.get("text").composite as string;
+      showDialog({
+        title: "Edit Top Bar Text",
+        body: new EditHandler(oldText),
+        buttons: [
+          Dialog.cancelButton(),
+          Dialog.okButton({ label: "Save" })
+        ]
+      }).then(result => {
+        if (!result.button.accept) {
+          return;
+        }
+        let text = result.value;
+        if (text === null) {
+          return;
+        }
+        settingsRegistry.set(extension.id, "text", text);
+        textNode.textContent = text;
+      });
+    }
 
     app.contextMenu.addItem({
       command: CommandIDs.editText,
@@ -58,23 +76,9 @@ const extension: JupyterLabPlugin<void> = {
       }
     });
 
-    function showUpdateTextDialog() {
-      let oldText = settings.get("text").composite as string;
-      showDialog({
-        title: "Edit TopBar Text",
-        body: new EditHandler(oldText),
-        buttons
-      }).then(result => {
-        if (!result.button.accept) {
-          return;
-        }
-        let text = result.value;
-        if (text === null) {
-          return;
-        }
-        settingsRegistry.set(extension.id, "text", text);
-        textNode.textContent = text;
-      });
+    if (palette) {
+      const category = 'Top Bar Text'
+      palette.addItem({ command: CommandIDs.editText, category });
     }
 
     app.restored.then(() => {

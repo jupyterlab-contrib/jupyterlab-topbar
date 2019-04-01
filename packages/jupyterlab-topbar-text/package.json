@@ -34,8 +34,7 @@
     "@jupyterlab/application": "^0.19.1",
     "@jupyterlab/apputils": "^0.19.1",
     "@jupyterlab/coreutils": "^2.2.1",
-    "jupyterlab-topbar": "^0.1.1",
-    "react": "~16.4.2"
+    "jupyterlab-topbar": "^0.1.1"
   },
   "devDependencies": {
     "rimraf": "^2.6.1",

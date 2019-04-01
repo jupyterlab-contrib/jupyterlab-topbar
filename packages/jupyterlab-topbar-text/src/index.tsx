@@ -1,41 +1,126 @@
-import {
-  JupyterLab, JupyterLabPlugin
-} from '@jupyterlab/application';
+import { JupyterLab, JupyterLabPlugin } from "@jupyterlab/application";
 
-import { ISettingRegistry } from '@jupyterlab/coreutils';
+import { Dialog, showDialog } from "@jupyterlab/apputils";
 
-import React from 'react';
+import { ISettingRegistry, PathExt } from "@jupyterlab/coreutils";
 
-import {
-  ReactElementWidget
-} from '@jupyterlab/apputils';
+import { Widget } from "@phosphor/widgets";
 
-import {
-  ITopBar
-} from 'jupyterlab-topbar';
+import { ITopBar } from "jupyterlab-topbar";
 
-import '../style/index.css';
+import "../style/index.css";
+
+const TOPBAR_TEXT = "jp-TopBar-Text";
+
+namespace CommandIDs {
+  /**
+   * Edit TopBar Text
+   */
+  export const editText = `jupyterlab-topbar-text:edit-text`;
+}
 
 /**
  * Initialization data for the jupyterlab-topbar-text extension.
  */
 const extension: JupyterLabPlugin<void> = {
-  id: 'jupyterlab-topbar-text:plugin',
+  id: "jupyterlab-topbar-text:plugin",
   autoStart: true,
-  requires: [
-    ISettingRegistry,
-    ITopBar,
-  ],
+  requires: [ISettingRegistry, ITopBar],
   activate: async (
     app: JupyterLab,
     settingsRegistry: ISettingRegistry,
-    topBar: ITopBar,
+    topBar: ITopBar
   ) => {
     const settings = await settingsRegistry.load(extension.id);
-    let text = settings.get('text').composite as string;
-    let textWidget = new ReactElementWidget(<div>{text}</div>);
-    topBar.addItem('custom-header', textWidget);
+    let text = settings.get("text").composite as string;
+    let textNode = document.createElement('div');
+    textNode.textContent = text;
+    let textWidget = new Widget({ node: textNode });
+
+    textWidget.addClass(TOPBAR_TEXT);
+    topBar.addItem("custom-header", textWidget);
+
+    const buttons = [
+      Dialog.cancelButton(),
+      Dialog.okButton({ label: "Save" })
+    ];
+
+    app.contextMenu.addItem({
+      command: CommandIDs.editText,
+      selector: `.${TOPBAR_TEXT}`,
+      rank: 1
+    });
+
+    app.commands.addCommand(CommandIDs.editText, {
+      label: "Edit Text",
+      execute: (args: any) => {
+        showUpdateTextDialog();
+      }
+    });
+
+    function showUpdateTextDialog() {
+      let oldText = settings.get("text").composite as string;
+      showDialog({
+        title: "Edit TopBar Text",
+        body: new EditHandler(oldText),
+        buttons
+      }).then(result => {
+        if (!result.button.accept) {
+          return;
+        }
+        let text = result.value;
+        if (text === null) {
+          return;
+        }
+        settingsRegistry.set(extension.id, "text", text);
+        textNode.textContent = text;
+      });
+    }
+
+    app.restored.then(() => {
+      settings.changed.connect(async () => {
+        text = settings.get("text").composite as string;
+        textNode.textContent = text;
+      });
+    });
   }
 };
+
+class EditHandler extends Widget {
+  constructor(oldPath: string) {
+    super({ node: Private.createEditNode(oldPath) });
+    let ext = PathExt.extname(oldPath);
+    let value = (this.inputNode.value = PathExt.basename(oldPath));
+    this.inputNode.setSelectionRange(0, value.length - ext.length);
+  }
+
+  get inputNode(): HTMLInputElement {
+    return this.node.getElementsByTagName("input")[0] as HTMLInputElement;
+  }
+
+  getValue(): string {
+    return this.inputNode.value;
+  }
+}
+
+namespace Private {
+  export function createEditNode(oldText: string): HTMLElement {
+    let body = document.createElement("div");
+    let existingLabel = document.createElement("label");
+    existingLabel.textContent = "Old Text";
+    let existingPath = document.createElement("span");
+    existingPath.textContent = oldText;
+
+    let nameTitle = document.createElement("label");
+    nameTitle.textContent = "New Text";
+    let name = document.createElement("input");
+
+    body.appendChild(existingLabel);
+    body.appendChild(existingPath);
+    body.appendChild(nameTitle);
+    body.appendChild(name);
+    return body;
+  }
+}
 
 export default extension;

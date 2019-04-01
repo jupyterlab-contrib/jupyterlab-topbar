@@ -70,14 +70,14 @@ const extension: JupyterLabPlugin<void> = {
     });
 
     app.commands.addCommand(CommandIDs.editText, {
-      label: "Edit Text",
+      label: "Edit Top Bar Text",
       execute: (args: any) => {
         showUpdateTextDialog();
       }
     });
 
     if (palette) {
-      const category = 'Top Bar Text'
+      const category = 'Top Bar';
       palette.addItem({ command: CommandIDs.editText, category });
     }
 

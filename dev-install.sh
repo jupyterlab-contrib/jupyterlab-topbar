@@ -3,7 +3,8 @@
 set -e
 
 yarn -v
-pip --version
+python -m pip --version
+
 jupyter lab --version 2>/dev/null
 
 yarn install

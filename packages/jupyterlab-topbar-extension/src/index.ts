@@ -1,4 +1,4 @@
-import { JupyterLab, JupyterLabPlugin } from "@jupyterlab/application";
+import { JupyterFrontEnd, JupyterFrontEndPlugin } from "@jupyterlab/application";
 
 import { IMainMenu } from "@jupyterlab/mainmenu";
 
@@ -20,13 +20,13 @@ namespace CommandIDs {
 /**
  * Initialization data for the jupyterlab-topbar extension.
  */
-const extension: JupyterLabPlugin<ITopBar> = {
+const extension: JupyterFrontEndPlugin<ITopBar> = {
   id: "jupyterlab-topbar-extension:plugin",
   autoStart: true,
   optional: [IMainMenu, ICommandPalette, ISettingRegistry],
   provides: ITopBar,
   activate: (
-    app: JupyterLab,
+    app: JupyterFrontEnd,
     menu: IMainMenu,
     palette: ICommandPalette,
     settingRegistry: ISettingRegistry
@@ -74,7 +74,7 @@ const extension: JupyterLabPlugin<ITopBar> = {
         });
     }
 
-    app.shell.addToTopArea(topBar);
+    app.shell.add(topBar, 'top');
 
     return topBar;
   }

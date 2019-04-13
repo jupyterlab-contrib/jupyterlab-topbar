@@ -33,9 +33,13 @@ jupyter labextension install jupyterlab-topbar-text
 
 ## Development
 
+Current development is targeting JupyterLab 1.0.
+
 ```bash
 conda env create
 conda activate jupyterlab-topbar
+# JupyterLab pre-release
+python -m pip install jupyterlab --pre
 
 ./dev-install.sh
 ```

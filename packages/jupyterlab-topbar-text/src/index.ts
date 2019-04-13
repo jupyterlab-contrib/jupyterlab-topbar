@@ -1,4 +1,4 @@
-import { JupyterLab, JupyterLabPlugin } from "@jupyterlab/application";
+import { JupyterFrontEnd, JupyterFrontEndPlugin } from "@jupyterlab/application";
 
 import { Dialog, ICommandPalette, showDialog } from "@jupyterlab/apputils";
 
@@ -22,12 +22,12 @@ namespace CommandIDs {
 /**
  * Initialization data for the jupyterlab-topbar-text extension.
  */
-const extension: JupyterLabPlugin<void> = {
+const extension: JupyterFrontEndPlugin<void> = {
   id: "jupyterlab-topbar-text:plugin",
   autoStart: true,
   requires: [ICommandPalette, ISettingRegistry, ITopBar],
   activate: async (
-    app: JupyterLab,
+    app: JupyterFrontEnd,
     palette: ICommandPalette,
     settingsRegistry: ISettingRegistry,
     topBar: ITopBar

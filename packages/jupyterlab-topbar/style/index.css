@@ -23,6 +23,7 @@
 .jp-TopBar-DragItem {
   z-index: 2;
   border: var(--jp-border-width) solid var(--jp-layout-color1);
+  color: var(--jp-content-font-color1);
   background: var(--jp-layout-color1);
 }
 

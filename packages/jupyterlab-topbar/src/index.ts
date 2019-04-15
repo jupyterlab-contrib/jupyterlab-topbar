@@ -211,11 +211,8 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     }
 
     const layout = this.layout as PanelLayout;
-    const result: any = Array.from(layout.widgets);
     const startIndex = this._dragData.index;
-    const endIndex = index;
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
+    const removed = layout.widgets[startIndex];
     layout.removeWidgetAt(startIndex);
     layout.insertWidget(index, removed);
   }

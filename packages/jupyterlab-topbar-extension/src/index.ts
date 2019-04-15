@@ -33,7 +33,6 @@ const extension: JupyterFrontEndPlugin<ITopBar> = {
   ): ITopBar => {
     let topBar = new TopBar();
     topBar.id = "jp-TopBar";
-    topBar.addClass("jp-TopBar");
     topBar.addItem("spacer", TopBar.createSpacerItem());
 
     app.commands.addCommand(CommandIDs.toggle, {

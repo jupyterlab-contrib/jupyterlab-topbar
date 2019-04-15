@@ -1,4 +1,4 @@
-import { Toolbar, DOMUtils } from '@jupyterlab/apputils';
+import { Toolbar } from '@jupyterlab/apputils';
 
 import { ArrayExt } from '@phosphor/algorithm';
 import { Token, MimeData } from '@phosphor/coreutils';
@@ -9,9 +9,10 @@ import { Widget, PanelLayout } from '@phosphor/widgets';
 
 import '../style/index.css';
 
+const TOPBAR_CLASS = 'jp-TopBar';
 const CONTENT_CLASS = 'jp-TopBar-item';
-const DRAG_CONTENT_CLASS = 'jp-DragItem';
-const DROP_TARGET_CLASS = 'TODO';
+const DRAG_CONTENT_CLASS = 'jp-TopBar-DragItem';
+const DROP_TARGET_CLASS = 'jp-TopBar-DropTarget';
 const DRAG_THRESHOLD = 5;
 
 export const ITopBar = new Token<ITopBar>('jupyterlab-topbar:ITopBar');
@@ -21,6 +22,11 @@ export interface ITopBar {
 }
 
 export class TopBar extends Toolbar<Widget> implements ITopBar {
+  constructor() {
+    super();
+    this.addClass(TOPBAR_CLASS);
+  }
+
   addItem(name: string, item: Widget): boolean {
     item.addClass(CONTENT_CLASS);
     return super.addItem(name, item);
@@ -29,41 +35,27 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
   protected onAfterAttach(msg: Message): void {
     super.onAfterAttach(msg);
     let node = this.node;
-    let content = DOMUtils.findElement(node, CONTENT_CLASS);
     node.addEventListener('contextmenu', this, true);
     node.addEventListener('mousedown', this, true);
     node.addEventListener('mousedown', this);
     node.addEventListener('dblclick', this);
-    content.addEventListener('dragenter', this);
-    content.addEventListener('dragover', this);
-    content.addEventListener('dragleave', this);
-    content.addEventListener('dragend', this);
-    content.addEventListener('drop', this);
-    content.addEventListener('scroll', this);
-    content.addEventListener('p-dragenter', this);
-    content.addEventListener('p-dragleave', this);
-    content.addEventListener('p-dragover', this);
-    content.addEventListener('p-drop', this);
+    node.addEventListener('p-dragenter', this);
+    node.addEventListener('p-dragleave', this);
+    node.addEventListener('p-dragover', this);
+    node.addEventListener('p-drop', this);
   }
 
   protected onBeforeDetach(msg: Message): void {
     let node = this.node;
-    let content = DOMUtils.findElement(node, CONTENT_CLASS);
     node.removeEventListener('contextmenu', this, true);
     node.removeEventListener('mousedown', this, true);
     node.removeEventListener('mousedown', this);
     node.removeEventListener('keydown', this);
     node.removeEventListener('dblclick', this);
-    content.removeEventListener('scroll', this);
-    content.removeEventListener('dragover', this);
-    content.removeEventListener('dragover', this);
-    content.removeEventListener('dragleave', this);
-    content.removeEventListener('dragend', this);
-    content.removeEventListener('drop', this);
-    content.removeEventListener('p-dragenter', this);
-    content.removeEventListener('p-dragleave', this);
-    content.removeEventListener('p-dragover', this);
-    content.removeEventListener('p-drop', this);
+    node.removeEventListener('p-dragenter', this);
+    node.removeEventListener('p-dragleave', this);
+    node.removeEventListener('p-dragover', this);
+    node.removeEventListener('p-drop', this);
     document.removeEventListener('mousemove', this, true);
     document.removeEventListener('mouseup', this, true);
   }
@@ -92,14 +84,12 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
         this._evtDrop(event as IDragEvent);
         break;
       default:
-        console.log(event.type);
         break;
     }
   }
 
   private _evtMousedown(event: MouseEvent): void {
     let index = Private.hitTestNodes(this.node.children, event.clientX, event.clientY);
-    console.log(index);
     if (index === -1) {
       return;
     }
@@ -123,8 +113,8 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
       document.removeEventListener('mouseup', this, true);
       return;
     }
-    // event.preventDefault();
-    // event.stopPropagation();
+    event.preventDefault();
+    event.stopPropagation();
   }
 
   private _evtMousemove(event: MouseEvent): void {
@@ -154,20 +144,17 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     // }
     event.preventDefault();
     event.stopPropagation();
-    // let target = event.target as HTMLElement;
-    // console.log(target);
-    // let index = this._findWidget(target);
-    let index = 0;
-    // if (index === -1) {
-    //   return;
-    // }
+    let target = event.target as HTMLElement;
+    let index = Private.findWidget(this.node.children, target);
+    if (index === -1) {
+      return;
+    }
 
     let widget = (this.layout as PanelLayout).widgets[index];
     widget.node.classList.add(DROP_TARGET_CLASS);
   }
 
   private _evtDragLeave(event: IDragEvent): void {
-    console.log('leave');
     // if (!event.mimeData.hasData(JUPYTER_CELL_MIME)) {
     //   return;
     // }
@@ -190,10 +177,8 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     if (elements.length) {
       (elements[0] as HTMLElement).classList.remove(DROP_TARGET_CLASS);
     }
-    // let target = event.target as HTMLElement;
-    // console.log(target);
-    // let index = this._findCell(target);
-    let index = 0;
+    let target = event.target as HTMLElement;
+    let index = Private.findWidget(this.node.children, target);
     if (index === -1) {
       return;
     }
@@ -202,7 +187,6 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
   }
 
   private _evtDrop(event: IDragEvent): void {
-    console.log('dropped');
     // if (!event.mimeData.hasData(JUPYTER_CELL_MIME)) {
     //   return;
     // }
@@ -221,8 +205,19 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
       }
       target = target.parentElement;
     }
+    let index = Private.findWidget(this.node.children, target);
+    if (index === -1) {
+      return;
+    }
 
-    // TODO: reorder widgets
+    const layout = this.layout as PanelLayout;
+    const result: any = Array.from(layout.widgets);
+    const startIndex = this._dragData.index;
+    const endIndex = index;
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+    layout.removeWidgetAt(startIndex);
+    layout.insertWidget(index, removed);
   }
 
   private _startDrag(index: number, clientX: number, clientY: number): void {
@@ -270,6 +265,13 @@ namespace Private {
     return ArrayExt.findFirstIndex(nodes, node =>
       ElementExt.hitTest(node, x, y)
     );
+  }
+
+  export function findWidget(
+    nodes: HTMLCollection,
+    target: HTMLElement,
+  ): number {
+    return ArrayExt.findFirstIndex(nodes, node => node === target);
   }
 
   export function createDragImage(

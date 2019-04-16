@@ -189,13 +189,22 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     if (elements.length) {
       (elements[0] as HTMLElement).classList.remove(DROP_TARGET_CLASS);
     }
-    let target = event.target as HTMLElement;
+    let target = this._findRootItem(event.target as HTMLElement)
     let index = Private.findWidget(this.node.children, target);
     if (index === -1) {
       return;
     }
     let widget = (this.layout as PanelLayout).widgets[index];
     widget.node.classList.add(DROP_TARGET_CLASS);
+  }
+
+  private _findRootItem(node: HTMLElement) {
+    while (node && this.node !== node.parentElement) {
+      if (node.classList.contains(CONTENT_CLASS)) {
+      }
+      node = node.parentElement;
+    }
+    return node;
   }
 
   private _evtDrop(event: IDragEvent): void {

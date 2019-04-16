@@ -59,6 +59,9 @@ const extension: JupyterFrontEndPlugin<ITopBar> = {
       const updateSettings = (settings: ISettingRegistry.ISettings): void => {
         const visible = settings.get("visible").composite as boolean;
         topBar.setHidden(!visible);
+
+        const order = settings.get("order").composite as string[];
+        topBar.setOrder(order);
       };
 
       topBar.changed.connect((sender, orderedNames: string[]) => {

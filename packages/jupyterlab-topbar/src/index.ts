@@ -38,6 +38,21 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     return super.addItem(name, item);
   }
 
+  setOrder(order: string[]): void {
+    let layout = this.layout as PanelLayout;
+    const names = toArray(this.names());
+    let mapping: {[key: string]: Widget} = {};
+    names.forEach((name, i) => mapping[name] = layout.widgets[i]);
+    // re-add them in order
+    order.forEach((name, pos) => {
+      if (!mapping.hasOwnProperty(name)) return;
+      // using the layout lower-level API
+      // TODO: investigate is the Toolbar could expose an API
+      // that allows reordering
+      layout.insertWidget(pos, mapping[name]);
+    });
+  }
+
   protected onAfterAttach(msg: Message): void {
     super.onAfterAttach(msg);
     let node = this.node;

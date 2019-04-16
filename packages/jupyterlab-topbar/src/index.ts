@@ -1,6 +1,6 @@
 import { Toolbar } from '@jupyterlab/apputils';
 
-import { ArrayExt } from '@phosphor/algorithm';
+import { ArrayExt, every, map, toArray } from '@phosphor/algorithm';
 import { Token, MimeData } from '@phosphor/coreutils';
 import { ElementExt } from '@phosphor/domutils';
 import { IDragEvent, Drag } from '@phosphor/dragdrop';
@@ -8,6 +8,7 @@ import { Message } from '@phosphor/messaging';
 import { Widget, PanelLayout } from '@phosphor/widgets';
 
 import '../style/index.css';
+import { Signal, ISignal } from '@phosphor/signaling';
 
 const TOPBAR_CLASS = 'jp-TopBar';
 const CONTENT_CLASS = 'jp-TopBar-item';
@@ -25,6 +26,11 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
   constructor() {
     super();
     this.addClass(TOPBAR_CLASS);
+    this._changed = new Signal<TopBar, string[]>(this);
+  }
+
+  get changed(): ISignal<TopBar, string[]> {
+    return this._changed;
   }
 
   addItem(name: string, item: Widget): boolean {
@@ -139,9 +145,6 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
 
 
   private _evtDragEnter(event: IDragEvent): void {
-    // if (!event.mimeData.hasData(JUPYTER_CELL_MIME)) {
-    //   return;
-    // }
     event.preventDefault();
     event.stopPropagation();
     let target = event.target as HTMLElement;
@@ -155,9 +158,6 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
   }
 
   private _evtDragLeave(event: IDragEvent): void {
-    // if (!event.mimeData.hasData(JUPYTER_CELL_MIME)) {
-    //   return;
-    // }
     event.preventDefault();
     event.stopPropagation();
     let elements = this.node.getElementsByClassName(DROP_TARGET_CLASS);
@@ -167,9 +167,6 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
   }
 
   private _evtDragOver(event: IDragEvent): void {
-    // if (!event.mimeData.hasData(JUPYTER_CELL_MIME)) {
-    //   return;
-    // }
     event.preventDefault();
     event.stopPropagation();
     event.dropAction = event.proposedAction;
@@ -187,9 +184,6 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
   }
 
   private _evtDrop(event: IDragEvent): void {
-    // if (!event.mimeData.hasData(JUPYTER_CELL_MIME)) {
-    //   return;
-    // }
     event.preventDefault();
     event.stopPropagation();
     if (event.proposedAction === 'none') {
@@ -210,11 +204,19 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
       return;
     }
 
+    const prevNames = toArray(this.names());
+
     const layout = this.layout as PanelLayout;
     const startIndex = this._dragData.index;
     const removed = layout.widgets[startIndex];
     layout.removeWidgetAt(startIndex);
     layout.insertWidget(index, removed);
+
+    const newNames = toArray(this.names());
+    const equal = every(map(newNames, (value, i) => value === prevNames[i]), v => v);
+    if (!equal) {
+      this._changed.emit(newNames);
+    }
   }
 
   private _startDrag(index: number, clientX: number, clientY: number): void {
@@ -243,6 +245,7 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     pressY: number;
     index: number;
   } | null = null;
+  private _changed: Signal<TopBar, string[]>;
 
 }
 

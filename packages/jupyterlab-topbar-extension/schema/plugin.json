@@ -9,6 +9,12 @@
       "description": "Whether the top bar is visible or not",
       "default": true,
       "type": "boolean"
+    },
+    "order": {
+      "title": "Items Order",
+      "description": "Ordered list of the Top Bar items",
+      "default": [],
+      "type": "array"
     }
   },
   "additionalProperties": false,

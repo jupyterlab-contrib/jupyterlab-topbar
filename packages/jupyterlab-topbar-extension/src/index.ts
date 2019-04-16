@@ -61,6 +61,10 @@ const extension: JupyterFrontEndPlugin<ITopBar> = {
         topBar.setHidden(!visible);
       };
 
+      topBar.changed.connect((sender, orderedNames: string[]) => {
+        settingRegistry.set(extension.id, 'order', orderedNames);
+      });
+
       Promise.all([settingRegistry.load(extension.id), app.restored])
         .then(([settings]) => {
           updateSettings(settings);

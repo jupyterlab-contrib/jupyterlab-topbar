@@ -39,7 +39,7 @@ const extension: JupyterFrontEndPlugin<void> = {
     let textWidget = new Widget({ node: textNode });
 
     textWidget.addClass(TOPBAR_TEXT);
-    topBar.addItem("custom-header", textWidget);
+    topBar.addItem("custom-text", textWidget);
 
     function showUpdateTextDialog() {
       let oldText = settings.get("text").composite as string;

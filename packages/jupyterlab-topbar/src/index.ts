@@ -230,6 +230,7 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
 
     const prevNames = toArray(this.names());
 
+    // TODO: swap items instead of re-ordering?
     const layout = this.layout as PanelLayout;
     const startIndex = this._dragData.index;
     const removed = layout.widgets[startIndex];

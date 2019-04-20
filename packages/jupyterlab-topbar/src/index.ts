@@ -293,6 +293,10 @@ namespace Private {
   ): HTMLElement {
       let dragImage = node.cloneNode(true) as HTMLElement;
       dragImage.className = DRAG_CONTENT_CLASS;
+      if (!node.innerHTML) {
+        dragImage.style.width = `${node.clientWidth}px`;
+        dragImage.style.height = `${node.clientHeight}px`;
+      }
       return dragImage;
   }
 }

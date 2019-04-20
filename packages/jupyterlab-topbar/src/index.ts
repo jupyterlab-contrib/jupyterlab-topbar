@@ -54,10 +54,8 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
   protected onAfterAttach(msg: Message): void {
     super.onAfterAttach(msg);
     let node = this.node;
-    node.addEventListener('contextmenu', this, true);
     node.addEventListener('mousedown', this, true);
     node.addEventListener('mousedown', this);
-    node.addEventListener('dblclick', this);
     node.addEventListener('p-dragenter', this);
     node.addEventListener('p-dragleave', this);
     node.addEventListener('p-dragover', this);
@@ -66,11 +64,8 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
 
   protected onBeforeDetach(msg: Message): void {
     let node = this.node;
-    node.removeEventListener('contextmenu', this, true);
     node.removeEventListener('mousedown', this, true);
     node.removeEventListener('mousedown', this);
-    node.removeEventListener('keydown', this);
-    node.removeEventListener('dblclick', this);
     node.removeEventListener('p-dragenter', this);
     node.removeEventListener('p-dragleave', this);
     node.removeEventListener('p-dragover', this);

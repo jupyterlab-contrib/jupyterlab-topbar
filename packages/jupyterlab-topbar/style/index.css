@@ -25,5 +25,6 @@
 
 .jp-TopBar-DropTarget {
   background-color: var(--md-blue-400);
-  opacity: 0.8;
+  color: var(--jp-content-font-color1);
+  opacity: 0.5;
 }

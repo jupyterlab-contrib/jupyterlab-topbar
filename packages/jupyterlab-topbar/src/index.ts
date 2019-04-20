@@ -46,9 +46,6 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     // re-add them in order
     order.forEach((name, pos) => {
       if (!mapping.hasOwnProperty(name)) return;
-      // using the layout lower-level API
-      // TODO: investigate is the Toolbar could expose an API
-      // that allows reordering
       layout.insertWidget(pos, mapping[name]);
     });
   }
@@ -115,7 +112,6 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
       return;
     }
 
-    // Left mouse press for drag start.
     if (event.button === 0) {
       this._dragData = {
         pressX: event.clientX,
@@ -128,7 +124,6 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
   }
 
   private _evtMouseup(event: MouseEvent): void {
-    // Remove the drag listeners if necessary.
     if (event.button !== 0 || !this._drag) {
       document.removeEventListener('mousemove', this, true);
       document.removeEventListener('mouseup', this, true);
@@ -142,12 +137,10 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     event.preventDefault();
     event.stopPropagation();
 
-    // Bail if we are the one dragging.
     if (this._drag || !this._dragData) {
       return;
     }
 
-    // Check for a drag initialization.
     let data = this._dragData;
     let dx = Math.abs(event.clientX - data.pressX);
     let dy = Math.abs(event.clientY - data.pressY);
@@ -230,12 +223,10 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
 
     const prevNames = toArray(this.names());
 
-    // TODO: swap items instead of re-ordering?
     const layout = this.layout as PanelLayout;
     const startIndex = this._dragData.index;
-    const removed = layout.widgets[startIndex];
-    layout.removeWidgetAt(startIndex);
-    layout.insertWidget(index, removed);
+    const widget = layout.widgets[startIndex];
+    layout.insertWidget(index, widget);
 
     const newNames = toArray(this.names());
     const equal = every(map(newNames, (value, i) => value === prevNames[i]), v => v);
@@ -245,18 +236,16 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
   }
 
   private _startDrag(index: number, clientX: number, clientY: number): void {
-    // Create the drag image.
     const item = this.node.children[index] as HTMLElement;
     let dragImage = Private.createDragImage(item);
 
-    // Set up the drag event.
     this._drag = new Drag({
       dragImage,
       mimeData: new MimeData(),
       supportedActions: 'move',
       proposedAction: 'move'
     });
-    // Start the drag and remove the mousemove and mouseup listeners.
+
     document.removeEventListener('mousemove', this, true);
     document.removeEventListener('mouseup', this, true);
     void this._drag.start(clientX, clientY).then(action => {

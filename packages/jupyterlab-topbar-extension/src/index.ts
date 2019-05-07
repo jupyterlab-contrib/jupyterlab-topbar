@@ -33,7 +33,6 @@ const extension: JupyterFrontEndPlugin<ITopBar> = {
   ): ITopBar => {
     let topBar = new TopBar();
     topBar.id = "jp-TopBar";
-    topBar.addClass("jp-TopBar");
     topBar.addItem("spacer", TopBar.createSpacerItem());
 
     app.commands.addCommand(CommandIDs.toggle, {
@@ -60,7 +59,14 @@ const extension: JupyterFrontEndPlugin<ITopBar> = {
       const updateSettings = (settings: ISettingRegistry.ISettings): void => {
         const visible = settings.get("visible").composite as boolean;
         topBar.setHidden(!visible);
+
+        const order = settings.get("order").composite as string[];
+        topBar.setOrder(order);
       };
+
+      topBar.changed.connect((sender, orderedNames: string[]) => {
+        settingRegistry.set(extension.id, 'order', orderedNames);
+      });
 
       Promise.all([settingRegistry.load(extension.id), app.restored])
         .then(([settings]) => {

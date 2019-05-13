@@ -27,4 +27,10 @@
   background-color: var(--md-blue-400);
   color: var(--jp-content-font-color1);
   opacity: 0.5;
+  cursor: move;
+}
+
+.jp-TopBar-DropTarget:hover {
+  background-color: var(--md-blue-400) !important;
+  cursor: move !important;
 }

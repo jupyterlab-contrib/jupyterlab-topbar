@@ -7,7 +7,7 @@ Similar to the [status bar](https://github.com/jupyterlab/jupyterlab/tree/master
 
 Inspired by Gnome Shell Top Bar indicators.
 
-![screenshot](./doc/screenshot.png)
+![screencast](./doc/screencast.gif)
 
 ## Try it online
 

@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab-topbar-text",
-  "version": "0.4.0-alpha.2",
+  "version": "0.3.0",
   "description": "JupyterLab extension to display arbitrary text in the top bar",
   "keywords": [
     "jupyter",
@@ -31,10 +31,10 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@jupyterlab/application": "^1.0.0-alpha.6",
-    "@jupyterlab/apputils": "^1.0.0-alpha.6",
-    "@jupyterlab/coreutils": "^3.0.0-alpha.6",
-    "jupyterlab-topbar": "^0.4.0-alpha.2"
+    "@jupyterlab/application": "^0.19.1",
+    "@jupyterlab/apputils": "^0.19.1",
+    "@jupyterlab/coreutils": "^2.2.1",
+    "jupyterlab-topbar": "^0.3.0"
   },
   "devDependencies": {
     "rimraf": "^2.6.1",

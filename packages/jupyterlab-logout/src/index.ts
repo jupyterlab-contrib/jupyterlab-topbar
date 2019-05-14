@@ -1,5 +1,5 @@
 import {
-  JupyterFrontEnd, JupyterFrontEndPlugin, IRouter
+  JupyterLab, JupyterLabPlugin, IRouter
 } from '@jupyterlab/application';
 
 import { Widget } from '@phosphor/widgets';
@@ -10,12 +10,12 @@ import '@jupyterlab/application/style/buttons.css';
 
 import '../style/index.css';
 
-const extension: JupyterFrontEndPlugin<void> = {
+const extension: JupyterLabPlugin<void> = {
   id: 'jupyterlab-logout',
   autoStart: true,
   requires: [IRouter, ITopBar],
   activate: async (
-    app: JupyterFrontEnd,
+    app: JupyterLab,
     router: IRouter,
     topBar: ITopBar,
   ) => {

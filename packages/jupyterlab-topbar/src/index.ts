@@ -108,15 +108,19 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
       return;
     }
 
-    if (event.button === 0) {
-      this._dragData = {
-        pressX: event.clientX,
-        pressY: event.clientY,
-        index: index
-      };
-      document.addEventListener('mouseup', this, true);
-      document.addEventListener('mousemove', this, true);
+    if (event.button !== 0) {
+      return;
     }
+
+    event.preventDefault();
+
+    this._dragData = {
+      pressX: event.clientX,
+      pressY: event.clientY,
+      index: index
+    };
+    document.addEventListener('mouseup', this, true);
+    document.addEventListener('mousemove', this, true);
   }
 
   private _evtMouseup(event: MouseEvent): void {

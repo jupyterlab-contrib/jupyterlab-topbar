@@ -38,6 +38,9 @@ pip install nbresuse
 
 # custom text in the top bar
 jupyter labextension install jupyterlab-topbar-text
+
+# add a logout button
+jupyter labextension install jupyterlab-logout
 ```
 
 ## Development

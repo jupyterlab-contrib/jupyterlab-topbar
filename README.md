@@ -26,7 +26,7 @@ Try the extensions in your browser with Binder:
 
 ## Installation
 
-Requires JupyterLab 0.35.4
+Requires JupyterLab 0.35.x
 
 ```bash
 # container extension

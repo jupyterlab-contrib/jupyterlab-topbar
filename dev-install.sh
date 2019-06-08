@@ -11,7 +11,8 @@ yarn install
 yarn run build
 
 jupyter labextension link ./packages/jupyterlab-topbar --no-build
-jupyter labextension install ./packages/jupyterlab-logout
-jupyter labextension install ./packages/jupyterlab-topbar-extension
-jupyter labextension install ./packages/jupyterlab-topbar-text
-jupyter labextension install ./packages/jupyterlab-system-monitor
+jupyter labextension install ./packages/jupyterlab-logout \
+                             ./packages/jupyterlab-topbar-extension \
+                             ./packages/jupyterlab-topbar-text \
+                             ./packages/jupyterlab-system-monitor \
+                             ./packages/jupyterlab-theme-toggle

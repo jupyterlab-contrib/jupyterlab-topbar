@@ -7,12 +7,12 @@ import { IThemeManager, ReactWidget } from "@jupyterlab/apputils";
 
 import { ITopBar } from "jupyterlab-topbar";
 
-import * as React from 'react';
+import * as React from "react";
 
 import {
   Switch as BPSwitch,
   ISwitchProps as IBPSwitchProps
-} from '@blueprintjs/core/lib/cjs/components/forms/controls';
+} from "@blueprintjs/core/lib/cjs/components/forms/controls";
 
 import "../style/index.css";
 
@@ -46,7 +46,7 @@ class Switch extends React.Component<ISwitchProps, ISwitchState> {
     } else {
       this.updateChecked();
     }
-    themeManager.themeChanged.connect(this.updateChecked,this);
+    themeManager.themeChanged.connect(this.updateChecked, this);
   }
 
   componentWillUnmount() {
@@ -66,11 +66,13 @@ class Switch extends React.Component<ISwitchProps, ISwitchState> {
   render() {
     let { themeManager, dark, ...others } = this.props;
 
-    return (<BPSwitch
-      {...others}
-      checked={this.state.dark}
-      className={this.props.className + ' jp-Switch'}
-    />);
+    return (
+      <BPSwitch
+        {...others}
+        checked={this.state.dark}
+        className={this.props.className + " jp-Switch"}
+      />
+    );
   }
 }
 
@@ -107,7 +109,7 @@ const extension: JupyterFrontEndPlugin<void> = {
         innerLabel="light"
         innerLabelChecked="dark"
       />
-    )
+    );
 
     topBar.addItem("theme-toggle", widget);
   }

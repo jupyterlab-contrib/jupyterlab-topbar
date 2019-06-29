@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab-theme-toggle",
-  "version": "0.4.0-rc.1",
+  "version": "0.4.0",
   "description": "JupyterLab extension to toggle the theme in the Top Bar area",
   "keywords": [
     "jupyter",
@@ -33,7 +33,7 @@
     "@blueprintjs/core": "^3.15.1",
     "@jupyterlab/application": "^1.0.0",
     "@jupyterlab/apputils": "^1.0.0",
-    "jupyterlab-topbar": "^0.4.0-rc.1",
+    "jupyterlab-topbar": "^0.4.0",
     "react": "^16.8.1"
   },
   "devDependencies": {

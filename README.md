@@ -26,7 +26,7 @@ Try the extensions in your browser with Binder:
 
 ## Installation
 
-Requires JupyterLab 0.35.x
+Requires JupyterLab 1.0
 
 ```bash
 # container extension
@@ -45,13 +45,9 @@ jupyter labextension install jupyterlab-logout
 
 ## Development
 
-Current development is targeting JupyterLab 1.0.
-
 ```bash
 conda env create
 conda activate jupyterlab-topbar
-# JupyterLab pre-release
-python -m pip install jupyterlab --pre
 
 ./dev-install.sh
 ```

@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab-topbar-text",
-  "version": "0.4.0-alpha.2",
+  "version": "0.4.0-rc.0",
   "description": "JupyterLab extension to display arbitrary text in the top bar",
   "keywords": [
     "jupyter",
@@ -26,19 +26,19 @@
   },
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf lib",
+    "clean": "rimraf lib && rimraf tsconfig.tsbuildinfo",
     "prepare": "npm run clean && npm run build",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@jupyterlab/application": "^1.0.0-alpha.6",
-    "@jupyterlab/apputils": "^1.0.0-alpha.6",
-    "@jupyterlab/coreutils": "^3.0.0-alpha.6",
-    "jupyterlab-topbar": "^0.4.0-alpha.2"
+    "@jupyterlab/application": "^1.0.0",
+    "@jupyterlab/apputils": "^1.0.0",
+    "@jupyterlab/coreutils": "^3.0.0",
+    "jupyterlab-topbar": "^0.4.0-rc.0"
   },
   "devDependencies": {
     "rimraf": "^2.6.1",
-    "typescript": "~3.1.1"
+    "typescript": "~3.5.1"
   },
   "jupyterlab": {
     "extension": true,

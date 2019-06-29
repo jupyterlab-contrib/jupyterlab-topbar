@@ -1,6 +1,7 @@
 set -xe
 
-jupyter labextension install jupyterlab-topbar-extension@0.3.0 \
-                             jupyterlab-system-monitor@0.3.0 \
-                             jupyterlab-topbar-text@0.3.0 \
-                             jupyterlab-logout@0.3.0
+jupyter labextension install jupyterlab-topbar-extension@0.4.0 \
+                             jupyterlab-system-monitor@0.4.0 \
+                             jupyterlab-topbar-text@0.4.0 \
+                             jupyterlab-logout@0.4.0 \
+                             jupyterlab-theme-toggle@0.4.0

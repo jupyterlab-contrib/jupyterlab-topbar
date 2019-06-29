@@ -17,6 +17,7 @@ Inspired by Gnome Shell Top Bar indicators.
 - [jupyterlab-topbar-text](./packages/jupyterlab-topbar-text): add and edit custom text
 - [jupyterlab-system-monitor](./packages/jupyterlab-system-monitor): show system metrics (memory usage)
 - [jupyterlab-logout](./packages/jupyterlab-logout): add a "Log Out" button
+- [jupyterlab-theme-toggle](./packages/jupyterlab-theme-toggle): switch between the Light and Dark themes
 
 ## Try it online
 
@@ -41,6 +42,9 @@ jupyter labextension install jupyterlab-topbar-text
 
 # add a logout button
 jupyter labextension install jupyterlab-logout
+
+# theme toggling extension
+jupyter labextension install jupyterlab-theme-toggle
 ```
 
 ## Development

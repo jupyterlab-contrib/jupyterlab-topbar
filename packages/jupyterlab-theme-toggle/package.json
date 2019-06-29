@@ -25,21 +25,21 @@
   },
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf lib",
+    "clean": "rimraf lib && rimraf tsconfig.tsbuildinfo",
     "prepare": "npm run clean && npm run build",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@jupyterlab/application": "^1.0.0-alpha.6",
-    "@jupyterlab/apputils": "^1.0.0-alpha.6",
+    "@jupyterlab/application": "^1.0.0",
+    "@jupyterlab/apputils": "^1.0.0",
     "@blueprintjs/core": "^3.15.1",
     "react": "^16.8.1",
-    "jupyterlab-topbar": "^0.4.0-alpha.2"
+    "jupyterlab-topbar": "^0.4.0-rc.0"
   },
   "devDependencies": {
     "@types/react": "^16.8.1",
     "rimraf": "^2.6.1",
-    "typescript": "~3.1.1"
+    "typescript": "~3.5.1"
   },
   "jupyterlab": {
     "extension": true

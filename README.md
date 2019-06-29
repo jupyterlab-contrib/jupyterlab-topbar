@@ -29,6 +29,8 @@ Try the extensions in your browser with Binder:
 
 Requires JupyterLab 1.0
 
+To install the extensions:
+
 ```bash
 # container extension
 jupyter labextension install jupyterlab-topbar-extension
@@ -46,6 +48,17 @@ jupyter labextension install jupyterlab-logout
 # theme toggling extension
 jupyter labextension install jupyterlab-theme-toggle
 ```
+
+All-in-one install:
+
+```bash
+jupyter labextension install jupyterlab-topbar-extension \
+                             jupyterlab-system-monitor \
+                             jupyterlab-topbar-text \
+                             jupyterlab-logout \
+                             jupyterlab-theme-toggle
+```
+
 
 ## Development
 

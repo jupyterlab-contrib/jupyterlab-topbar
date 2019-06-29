@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab-theme-toggle",
-  "version": "0.1.0",
+  "version": "0.4.0-rc.0",
   "description": "JupyterLab extension to toggle the theme in the Top Bar area",
   "keywords": [
     "jupyter",

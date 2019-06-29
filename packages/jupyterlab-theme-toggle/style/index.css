@@ -2,3 +2,7 @@
     /* TODO: orange background? */
     margin-bottom: 0;
 }
+
+.jp-Switch.bp3-control .bp3-control-indicator {
+    margin-right: 0px;
+}

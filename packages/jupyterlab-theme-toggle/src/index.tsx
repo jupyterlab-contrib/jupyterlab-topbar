@@ -9,12 +9,16 @@ import { ITopBar } from "jupyterlab-topbar";
 
 import * as React from "react";
 
+import { FocusStyleManager } from "@blueprintjs/core";
+
 import {
   Switch as BPSwitch,
   ISwitchProps as IBPSwitchProps
 } from "@blueprintjs/core/lib/cjs/components/forms/controls";
 
 import "../style/index.css";
+
+FocusStyleManager.onlyShowFocusOnTabs();
 
 interface ISwitchProps extends IBPSwitchProps {
   title?: string;
@@ -105,7 +109,6 @@ const extension: JupyterFrontEndPlugin<void> = {
       <Switch
         themeManager={themeManager}
         onChange={onChange}
-        label={"Theme"}
         innerLabel="light"
         innerLabelChecked="dark"
       />

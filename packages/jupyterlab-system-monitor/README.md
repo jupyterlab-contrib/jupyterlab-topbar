@@ -1,5 +1,7 @@
 # JupyterLab System Monitor
 
+**MOVED TO https://github.com/jtpio/jupyterlab-system-monitor**
+
 JupyterLab extension to display system information (memory and cpu usage).
 
 Provides an alternative frontend for the `nbresuse` metrics: [https://github.com/yuvipanda/nbresuse](https://github.com/yuvipanda/nbresuse)

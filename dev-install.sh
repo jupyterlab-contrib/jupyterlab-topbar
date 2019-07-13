@@ -14,5 +14,4 @@ jupyter labextension link ./packages/jupyterlab-topbar
 jupyter labextension install ./packages/jupyterlab-logout \
                              ./packages/jupyterlab-topbar-extension \
                              ./packages/jupyterlab-topbar-text \
-                             ./packages/jupyterlab-system-monitor \
                              ./packages/jupyterlab-theme-toggle

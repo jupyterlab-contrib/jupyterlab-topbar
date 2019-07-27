@@ -1,5 +1,7 @@
 # jupyterlab-theme-toggle
 
+**MOVED TO https://github.com/jtpio/jupyterlab-theme-toggle**
+
 JupyterLab extension to toggle the theme in the Top Bar area
 
 

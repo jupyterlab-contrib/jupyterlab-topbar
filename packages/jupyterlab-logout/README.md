@@ -1,11 +1,12 @@
 # jupyterlab-logout
 
-Logout Button for JupyterLab
+**MOVED TO https://github.com/jtpio/jupyterlab-logout**
 
+Logout Button for JupyterLab.
 
 ## Prerequisites
 
-* JupyterLab
+* JupyterLab 1.0+
 
 ## Installation
 

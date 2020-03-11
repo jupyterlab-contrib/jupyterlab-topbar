@@ -27,7 +27,7 @@ Try the extensions in your browser with Binder:
 
 ## Installation
 
-Requires JupyterLab 1.0
+Requires JupyterLab 1.0+
 
 To install the extensions:
 

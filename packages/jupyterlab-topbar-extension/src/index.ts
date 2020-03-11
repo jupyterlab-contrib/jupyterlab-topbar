@@ -4,7 +4,7 @@ import { IMainMenu } from "@jupyterlab/mainmenu";
 
 import { ICommandPalette } from "@jupyterlab/apputils";
 
-import { ISettingRegistry } from "@jupyterlab/coreutils";
+import { ISettingRegistry } from "@jupyterlab/settingregistry";
 
 import { ITopBar, TopBar } from "jupyterlab-topbar";
 
@@ -80,7 +80,7 @@ const extension: JupyterFrontEndPlugin<ITopBar> = {
         });
     }
 
-    app.shell.add(topBar, 'top');
+    app.shell.add(topBar, 'top', { rank: 1000 });
 
     return topBar;
   }

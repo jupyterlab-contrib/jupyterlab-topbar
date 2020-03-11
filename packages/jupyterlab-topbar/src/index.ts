@@ -1,12 +1,18 @@
 import { Toolbar } from '@jupyterlab/apputils';
 
-import { ArrayExt, every, map, toArray, each } from '@phosphor/algorithm';
-import { Token, MimeData } from '@phosphor/coreutils';
-import { ElementExt } from '@phosphor/domutils';
-import { IDragEvent, Drag } from '@phosphor/dragdrop';
-import { Message } from '@phosphor/messaging';
-import { Signal, ISignal } from '@phosphor/signaling';
-import { Widget, PanelLayout } from '@phosphor/widgets';
+import { ArrayExt, every, map, toArray, each } from '@lumino/algorithm';
+
+import { Token, MimeData } from '@lumino/coreutils';
+
+import { ElementExt } from '@lumino/domutils';
+
+import { IDragEvent, Drag } from '@lumino/dragdrop';
+
+import { Message } from '@lumino/messaging';
+
+import { Signal, ISignal } from '@lumino/signaling';
+
+import { Widget, PanelLayout } from '@lumino/widgets';
 
 import '../style/index.css';
 

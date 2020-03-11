@@ -2,9 +2,11 @@ import { JupyterFrontEnd, JupyterFrontEndPlugin } from "@jupyterlab/application"
 
 import { Dialog, ICommandPalette, showDialog } from "@jupyterlab/apputils";
 
-import { ISettingRegistry, PathExt } from "@jupyterlab/coreutils";
+import { PathExt } from "@jupyterlab/coreutils";
 
-import { Widget } from "@phosphor/widgets";
+import { ISettingRegistry } from "@jupyterlab/settingregistry";
+
+import { Widget } from "@lumino/widgets";
 
 import { ITopBar } from "jupyterlab-topbar";
 

@@ -4,7 +4,7 @@ import { IMainMenu } from "@jupyterlab/mainmenu";
 
 import { ICommandPalette } from "@jupyterlab/apputils";
 
-import { ISettingRegistry } from "@jupyterlab/coreutils";
+import { ISettingRegistry } from "@jupyterlab/settingregistry";
 
 import { ITopBar, TopBar } from "jupyterlab-topbar";
 

@@ -1,3 +1,7 @@
 # JupyterLab Top Bar Extension
 
-Experiments with JupyterLab's top bar.
+JupyterLab Top Bar Extension.
+
+## Development
+
+See: [README.md#Development](../../README.md#Development)

@@ -9,6 +9,12 @@
       "description": "Text to display",
       "default": "Hi There 👋",
       "type": "string"
+    },
+    "editable": {
+      "title": "Editable",
+      "description": "Whether the text can be edited via the UI",
+      "default": true,
+      "type": "boolean"
     }
   },
   "additionalProperties": false,

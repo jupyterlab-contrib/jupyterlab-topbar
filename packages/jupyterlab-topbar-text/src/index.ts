@@ -36,6 +36,7 @@ const extension: JupyterFrontEndPlugin<void> = {
   ) => {
     const settings = await settingsRegistry.load(extension.id);
     let text = settings.get("text").composite as string;
+    let editable = settings.get("editable").composite as boolean;
     let textNode = document.createElement('div');
     textNode.textContent = text;
     let textWidget = new Widget({ node: textNode });
@@ -75,7 +76,8 @@ const extension: JupyterFrontEndPlugin<void> = {
       label: "Edit Text",
       execute: (args: any) => {
         showUpdateTextDialog();
-      }
+      },
+      isEnabled: () => editable
     });
 
     if (palette) {
@@ -86,6 +88,7 @@ const extension: JupyterFrontEndPlugin<void> = {
     app.restored.then(() => {
       settings.changed.connect(async () => {
         text = settings.get("text").composite as string;
+        editable = settings.get("editable").composite as boolean;
         textNode.textContent = text;
       });
     });

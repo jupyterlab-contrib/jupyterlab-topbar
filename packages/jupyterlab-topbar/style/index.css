@@ -1,6 +1,9 @@
 .jp-TopBar {
   display: flex;
   flex-grow: 1 !important;
+  min-height: unset !important;
+  height: var(--jp-private-menubar-height);
+  border-bottom: var(--jp-border-width) solid var(--jp-border-color0);
 }
 
 .jp-TopBar > .jp-TopBar-item {

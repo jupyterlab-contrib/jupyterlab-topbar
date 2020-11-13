@@ -75,6 +75,9 @@ pip install -e .
 # Link your development version of the extension with JupyterLab
 jlpm run develop
 
+# For the jupyterlab-topbar-text extension
+jlpm run link
+
 # Rebuild extension TypeScript source after making changes
 jlpm run build
 ```

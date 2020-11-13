@@ -26,25 +26,38 @@
     "url": "https://github.com/jtpio/jupyterlab-topbar.git"
   },
   "scripts": {
-    "build": "tsc",
-    "clean": "rimraf lib && rimraf tsconfig.tsbuildinfo",
-    "prepare": "npm run clean && npm run build",
-    "watch": "tsc -w"
+    "build": "jlpm run build:lib && jlpm run build:labextension:dev",
+    "build:labextension": "jupyter labextension build .",
+    "build:labextension:dev": "jupyter labextension build --development True .",
+    "build:lib": "tsc",
+    "build:prod": "jlpm run build:lib && jlpm run build:labextension",
+    "clean": "jlpm run clean:lib",
+    "clean:all": "jlpm run clean:lib && jlpm run clean:labextension",
+    "clean:labextension": "rimraf jupyterlab-topbar-extension/labextension",
+    "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
+    "eslint": "eslint . --ext .ts,.tsx --fix",
+    "eslint:check": "eslint . --ext .ts,.tsx",
+    "install:extension": "jupyter labextension develop --overwrite .",
+    "prepare": "jlpm run clean && jlpm run build:prod",
+    "watch": "run-p watch:src watch:labextension",
+    "watch:labextension": "jupyter labextension watch .",
+    "watch:src": "tsc -w"
   },
   "dependencies": {
-    "@jupyterlab/application": "^3.0.0-rc.6",
-    "@jupyterlab/apputils": "^3.0.0-rc.6",
-    "@jupyterlab/coreutils": "^5.0.0-rc.6",
-    "@jupyterlab/mainmenu": "^3.0.0-rc.6",
-    "@jupyterlab/settingregistry": "^3.0.0-rc.6",
+    "@jupyterlab/application": "^3.0.0-rc.8",
+    "@jupyterlab/apputils": "^3.0.0-rc.8",
+    "@jupyterlab/coreutils": "^5.0.0-rc.8",
+    "@jupyterlab/mainmenu": "^3.0.0-rc.8",
+    "@jupyterlab/settingregistry": "^3.0.0-rc.8",
     "jupyterlab-topbar": "^0.6.0"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2",
-    "typescript": "~4.0.5"
+    "@jupyterlab/builder": "^3.0.0-rc.8",
+    "typescript": "~4.0.3"
   },
   "jupyterlab": {
     "extension": true,
-    "schemaDir": "schema"
+    "schemaDir": "schema",
+    "outputDir": "../../jupyterlab-topbar/labextension"
   }
 }

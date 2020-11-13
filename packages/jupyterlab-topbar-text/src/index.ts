@@ -1,31 +1,34 @@
-import { JupyterFrontEnd, JupyterFrontEndPlugin } from "@jupyterlab/application";
+import {
+  JupyterFrontEnd,
+  JupyterFrontEndPlugin,
+} from '@jupyterlab/application';
 
-import { Dialog, ICommandPalette, showDialog } from "@jupyterlab/apputils";
+import { Dialog, ICommandPalette, showDialog } from '@jupyterlab/apputils';
 
-import { PathExt } from "@jupyterlab/coreutils";
+import { PathExt } from '@jupyterlab/coreutils';
 
-import { ISettingRegistry } from "@jupyterlab/settingregistry";
+import { ISettingRegistry } from '@jupyterlab/settingregistry';
 
-import { Widget } from "@lumino/widgets";
+import { Widget } from '@lumino/widgets';
 
-import { ITopBar } from "jupyterlab-topbar";
+import { ITopBar } from 'jupyterlab-topbar';
 
-import "../style/index.css";
+import '../style/index.css';
 
-const TOPBAR_TEXT = "jp-TopBar-Text";
+const TOPBAR_TEXT = 'jp-TopBar-Text';
 
 namespace CommandIDs {
   /**
    * Edit TopBar Text
    */
-  export const editText = `jupyterlab-topbar-text:edit-text`;
+  export const editText = 'jupyterlab-topbar-text:edit-text';
 }
 
 /**
  * Initialization data for the jupyterlab-topbar-text extension.
  */
 const extension: JupyterFrontEndPlugin<void> = {
-  id: "jupyterlab-topbar-text:plugin",
+  id: 'jupyterlab-topbar-text:plugin',
   autoStart: true,
   requires: [ICommandPalette, ISettingRegistry, ITopBar],
   activate: async (
@@ -35,33 +38,30 @@ const extension: JupyterFrontEndPlugin<void> = {
     topBar: ITopBar
   ) => {
     const settings = await settingsRegistry.load(extension.id);
-    let text = settings.get("text").composite as string;
-    let editable = settings.get("editable").composite as boolean;
-    let textNode = document.createElement('div');
+    let text = settings.get('text').composite as string;
+    let editable = settings.get('editable').composite as boolean;
+    const textNode = document.createElement('div');
     textNode.textContent = text;
-    let textWidget = new Widget({ node: textNode });
+    const textWidget = new Widget({ node: textNode });
 
     textWidget.addClass(TOPBAR_TEXT);
-    topBar.addItem("custom-text", textWidget);
+    topBar.addItem('custom-text', textWidget);
 
     function showUpdateTextDialog() {
-      let oldText = settings.get("text").composite as string;
+      const oldText = settings.get('text').composite as string;
       showDialog({
-        title: "Edit Top Bar Text",
+        title: 'Edit Top Bar Text',
         body: new EditHandler(oldText),
-        buttons: [
-          Dialog.cancelButton(),
-          Dialog.okButton({ label: "Save" })
-        ]
-      }).then(result => {
+        buttons: [Dialog.cancelButton(), Dialog.okButton({ label: 'Save' })],
+      }).then((result) => {
         if (!result.button.accept) {
           return;
         }
-        let text = result.value;
+        const text = result.value;
         if (text === null) {
           return;
         }
-        settingsRegistry.set(extension.id, "text", text);
+        settingsRegistry.set(extension.id, 'text', text);
         textNode.textContent = text;
       });
     }
@@ -69,15 +69,15 @@ const extension: JupyterFrontEndPlugin<void> = {
     app.contextMenu.addItem({
       command: CommandIDs.editText,
       selector: `.${TOPBAR_TEXT}`,
-      rank: 1
+      rank: 1,
     });
 
     app.commands.addCommand(CommandIDs.editText, {
-      label: "Edit Text",
+      label: 'Edit Text',
       execute: (args: any) => {
         showUpdateTextDialog();
       },
-      isEnabled: () => editable
+      isEnabled: () => editable,
     });
 
     if (palette) {
@@ -87,24 +87,24 @@ const extension: JupyterFrontEndPlugin<void> = {
 
     app.restored.then(() => {
       settings.changed.connect(async () => {
-        text = settings.get("text").composite as string;
-        editable = settings.get("editable").composite as boolean;
+        text = settings.get('text').composite as string;
+        editable = settings.get('editable').composite as boolean;
         textNode.textContent = text;
       });
     });
-  }
+  },
 };
 
 class EditHandler extends Widget {
   constructor(oldPath: string) {
     super({ node: Private.createEditNode(oldPath) });
-    let ext = PathExt.extname(oldPath);
-    let value = (this.inputNode.value = PathExt.basename(oldPath));
+    const ext = PathExt.extname(oldPath);
+    const value = (this.inputNode.value = PathExt.basename(oldPath));
     this.inputNode.setSelectionRange(0, value.length - ext.length);
   }
 
   get inputNode(): HTMLInputElement {
-    return this.node.getElementsByTagName("input")[0] as HTMLInputElement;
+    return this.node.getElementsByTagName('input')[0] as HTMLInputElement;
   }
 
   getValue(): string {
@@ -114,15 +114,15 @@ class EditHandler extends Widget {
 
 namespace Private {
   export function createEditNode(oldText: string): HTMLElement {
-    let body = document.createElement("div");
-    let existingLabel = document.createElement("label");
-    existingLabel.textContent = "Old Text";
-    let existingPath = document.createElement("span");
+    const body = document.createElement('div');
+    const existingLabel = document.createElement('label');
+    existingLabel.textContent = 'Old Text';
+    const existingPath = document.createElement('span');
     existingPath.textContent = oldText;
 
-    let nameTitle = document.createElement("label");
-    nameTitle.textContent = "New Text";
-    let name = document.createElement("input");
+    const nameTitle = document.createElement('label');
+    nameTitle.textContent = 'New Text';
+    const name = document.createElement('input');
 
     body.appendChild(existingLabel);
     body.appendChild(existingPath);

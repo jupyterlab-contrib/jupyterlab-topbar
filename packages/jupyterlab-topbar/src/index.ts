@@ -47,19 +47,23 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
   }
 
   setOrder(order: string[]): void {
-    let layout = this.layout as PanelLayout;
-    let mapping: {[key: string]: Widget} = {};
-    each(this.names(), (name, i) => { mapping[name] = layout.widgets[i]; });
+    const layout = this.layout as PanelLayout;
+    const mapping: { [key: string]: Widget } = {};
+    each(this.names(), (name, i) => {
+      mapping[name] = layout.widgets[i];
+    });
     // re-add items in order
     order.forEach((name, pos) => {
-      if (!mapping.hasOwnProperty(name)) return;
+      if (!mapping[name]) {
+        return;
+      }
       layout.insertWidget(pos, mapping[name]);
     });
   }
 
   protected onAfterAttach(msg: Message): void {
     super.onAfterAttach(msg);
-    let node = this.node;
+    const node = this.node;
     node.addEventListener('mousedown', this, true);
     node.addEventListener('mousedown', this);
     node.addEventListener('p-dragenter', this);
@@ -69,7 +73,7 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
   }
 
   protected onBeforeDetach(msg: Message): void {
-    let node = this.node;
+    const node = this.node;
     node.removeEventListener('mousedown', this, true);
     node.removeEventListener('mousedown', this);
     node.removeEventListener('p-dragenter', this);
@@ -109,7 +113,11 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
   }
 
   private _evtMousedown(event: MouseEvent): void {
-    let index = Private.hitTestNodes(this.node.children, event.clientX, event.clientY);
+    const index = Private.hitTestNodes(
+      this.node.children,
+      event.clientX,
+      event.clientY
+    );
     if (index === -1) {
       return;
     }
@@ -123,7 +131,7 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     this._dragData = {
       pressX: event.clientX,
       pressY: event.clientY,
-      index: index
+      index: index,
     };
     document.addEventListener('mouseup', this, true);
     document.addEventListener('mousemove', this, true);
@@ -147,9 +155,9 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
       return;
     }
 
-    let data = this._dragData;
-    let dx = Math.abs(event.clientX - data.pressX);
-    let dy = Math.abs(event.clientY - data.pressY);
+    const data = this._dragData;
+    const dx = Math.abs(event.clientX - data.pressX);
+    const dy = Math.abs(event.clientY - data.pressY);
     if (dx < DRAG_THRESHOLD && dy < DRAG_THRESHOLD) {
       return;
     }
@@ -157,20 +165,19 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     this._startDrag(data.index, event.clientX, event.clientY);
   }
 
-
   private _evtDragEnter(event: IDragEvent): void {
     if (!event.mimeData.hasData(CONTENTS_MIME)) {
       return;
     }
     event.preventDefault();
     event.stopPropagation();
-    let target = event.target as HTMLElement;
-    let index = Private.findWidget(this.node.children, target);
+    const target = event.target as HTMLElement;
+    const index = Private.findWidget(this.node.children, target);
     if (index === -1) {
       return;
     }
 
-    let widget = (this.layout as PanelLayout).widgets[index];
+    const widget = (this.layout as PanelLayout).widgets[index];
     widget.node.classList.add(DROP_TARGET_CLASS);
   }
 
@@ -180,7 +187,7 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     }
     event.preventDefault();
     event.stopPropagation();
-    let elements = this.node.getElementsByClassName(DROP_TARGET_CLASS);
+    const elements = this.node.getElementsByClassName(DROP_TARGET_CLASS);
     if (elements.length) {
       (elements[0] as HTMLElement).classList.remove(DROP_TARGET_CLASS);
     }
@@ -193,23 +200,21 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     event.preventDefault();
     event.stopPropagation();
     event.dropAction = event.proposedAction;
-    let elements = this.node.getElementsByClassName(DROP_TARGET_CLASS);
+    const elements = this.node.getElementsByClassName(DROP_TARGET_CLASS);
     if (elements.length) {
       (elements[0] as HTMLElement).classList.remove(DROP_TARGET_CLASS);
     }
-    let target = this._findRootItem(event.target as HTMLElement)
-    let index = Private.findWidget(this.node.children, target);
+    const target = this._findRootItem(event.target as HTMLElement);
+    const index = Private.findWidget(this.node.children, target);
     if (index === -1) {
       return;
     }
-    let widget = (this.layout as PanelLayout).widgets[index];
+    const widget = (this.layout as PanelLayout).widgets[index];
     widget.node.classList.add(DROP_TARGET_CLASS);
   }
 
-  private _findRootItem(node: HTMLElement) {
+  private _findRootItem(node: HTMLElement): HTMLElement {
     while (node && this.node !== node.parentElement) {
-      if (node.classList.contains(CONTENT_CLASS)) {
-      }
       node = node.parentElement;
     }
     return node;
@@ -234,7 +239,7 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
       }
       target = target.parentElement;
     }
-    let index = Private.findWidget(this.node.children, target);
+    const index = Private.findWidget(this.node.children, target);
     if (index === -1) {
       return;
     }
@@ -247,7 +252,10 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     layout.insertWidget(index, widget);
 
     const newNames = toArray(this.names());
-    const equal = every(map(newNames, (value, i) => value === prevNames[i]), v => v);
+    const equal = every(
+      map(newNames, (value, i) => value === prevNames[i]),
+      (v) => v
+    );
     if (!equal) {
       this._changed.emit(newNames);
     }
@@ -255,20 +263,20 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
 
   private _startDrag(index: number, clientX: number, clientY: number): void {
     const item = this.node.children[index] as HTMLElement;
-    let dragImage = Private.createDragImage(item);
+    const dragImage = Private.createDragImage(item);
 
     this._drag = new Drag({
       dragImage,
       mimeData: new MimeData(),
       supportedActions: 'move',
-      proposedAction: 'move'
+      proposedAction: 'move',
     });
 
     this._drag.mimeData.setData(CONTENTS_MIME, index);
 
     document.removeEventListener('mousemove', this, true);
     document.removeEventListener('mouseup', this, true);
-    void this._drag.start(clientX, clientY).then(action => {
+    void this._drag.start(clientX, clientY).then((action) => {
       this._drag = null;
     });
   }
@@ -280,7 +288,6 @@ export class TopBar extends Toolbar<Widget> implements ITopBar {
     index: number;
   } | null = null;
   private _changed: Signal<TopBar, string[]>;
-
 }
 
 export namespace TopBar {
@@ -290,33 +297,30 @@ export namespace TopBar {
 }
 
 namespace Private {
-
   export function hitTestNodes(
     nodes: HTMLCollection,
     x: number,
     y: number
   ): number {
-    return ArrayExt.findFirstIndex(nodes, node =>
+    return ArrayExt.findFirstIndex(nodes, (node) =>
       ElementExt.hitTest(node, x, y)
     );
   }
 
   export function findWidget(
     nodes: HTMLCollection,
-    target: HTMLElement,
+    target: HTMLElement
   ): number {
-    return ArrayExt.findFirstIndex(nodes, node => node === target);
+    return ArrayExt.findFirstIndex(nodes, (node) => node === target);
   }
 
-  export function createDragImage(
-    node: HTMLElement,
-  ): HTMLElement {
-      let dragImage = node.cloneNode(true) as HTMLElement;
-      dragImage.className = DRAG_CONTENT_CLASS;
-      if (!node.innerHTML) {
-        dragImage.style.width = `${node.clientWidth}px`;
-        dragImage.style.height = `${node.clientHeight}px`;
-      }
-      return dragImage;
+  export function createDragImage(node: HTMLElement): HTMLElement {
+    const dragImage = node.cloneNode(true) as HTMLElement;
+    dragImage.className = DRAG_CONTENT_CLASS;
+    if (!node.innerHTML) {
+      dragImage.style.width = `${node.clientWidth}px`;
+      dragImage.style.height = `${node.clientHeight}px`;
+    }
+    return dragImage;
   }
 }

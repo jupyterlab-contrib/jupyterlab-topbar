@@ -58,6 +58,13 @@
   "jupyterlab": {
     "extension": true,
     "schemaDir": "schema",
-    "outputDir": "../../jupyterlab-topbar/labextension"
+    "outputDir": "../../jupyterlab-topbar/labextension",
+    "sharedPackages": {
+      "jupyterlab-topbar": {
+        "requiredVersion": "^0.6.0",
+        "bundled": true,
+        "singleton": true
+      }
+    }
   }
 }

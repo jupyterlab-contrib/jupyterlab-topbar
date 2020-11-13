@@ -45,6 +45,13 @@
   },
   "jupyterlab": {
     "extension": true,
-    "schemaDir": "schema"
+    "schemaDir": "schema",
+    "sharedPackages": {
+      "jupyterlab-topbar": {
+        "requiredVersion": "^0.6.0",
+        "bundled": false,
+        "singleton": true
+      }
+    }
   }
 }

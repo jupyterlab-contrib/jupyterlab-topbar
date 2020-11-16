@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "clean": "lerna run clean",
+    "clean:all": "lerna run clean:all",
     "build": "lerna run build",
     "build:prod": "lerna run build:prod",
     "develop": "jupyter labextension develop . --overwrite",

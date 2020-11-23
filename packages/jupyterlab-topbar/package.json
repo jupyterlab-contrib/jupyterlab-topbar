@@ -29,7 +29,6 @@
     "build:src": "tsc",
     "build": "jlpm run build:src",
     "build:prod": "jlpm run build:src",
-    "link": "jupyter labextension link . --no-build",
     "watch": "tsc -w"
   },
   "dependencies": {

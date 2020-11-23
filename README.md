@@ -27,9 +27,17 @@ Try the extensions in your browser with Binder:
 
 ## Installation
 
-Requires JupyterLab 1.0+
+### JupyterLab 3.0
 
-To install the extensions:
+```bash
+# container extension
+pip install jupyterlab-topbar
+
+# to install the topbar-text extension
+jupyter labextension install jupyterlab-topbar-text
+```
+
+### JupyterLab 1.x and 2.x
 
 ```bash
 # container extension

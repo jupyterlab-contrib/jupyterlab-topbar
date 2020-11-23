@@ -2,6 +2,7 @@
 
 ![Github Actions Status](https://github.com/jtpio/jupyterlab-topbar/workflows/Build/badge.svg)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jtpio/jupyterlab-topbar/stable?urlpath=lab)
+[![PyPI](https://img.shields.io/pypi/v/jupyterlab-topbar.svg)](https://pypi.org/project/jupyterlab-topbar)
 
 Monorepo to experiment with the top bar space in JupyterLab.
 

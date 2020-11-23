@@ -6,6 +6,10 @@
   border-bottom: var(--jp-border-width) solid var(--jp-border-color0);
 }
 
+.jp-LabShell[data-shell-mode='single-document'] .jp-TopBar {
+  border-bottom: unset;
+}
+
 .jp-TopBar > .jp-TopBar-item {
   display: flex;
   flex-direction: column;

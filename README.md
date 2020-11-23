@@ -1,5 +1,4 @@
-JupyterLab Top Bar
-==================
+# JupyterLab Top Bar
 
 ![Github Actions Status](https://github.com/jtpio/jupyterlab-topbar/workflows/Build/badge.svg)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jtpio/jupyterlab-topbar/stable?urlpath=lab)
@@ -28,9 +27,17 @@ Try the extensions in your browser with Binder:
 
 ## Installation
 
-Requires JupyterLab 1.0+
+### JupyterLab 3.0
 
-To install the extensions:
+```bash
+# container extension
+pip install jupyterlab-topbar
+
+# to install the topbar-text extension
+jupyter labextension install jupyterlab-topbar-text
+```
+
+### JupyterLab 1.x and 2.x
 
 ```bash
 # container extension
@@ -60,12 +67,31 @@ jupyter labextension install jupyterlab-topbar-extension \
                              jupyterlab-theme-toggle
 ```
 
-
 ## Development
 
 ```bash
-conda env create
+# create a new conda environment
+conda create -n jupyterlab-topbar -c conda-forge jupyterlab nodejs -y
 conda activate jupyterlab-topbar
 
-./dev-install.sh
+# Install dependencies
+jlpm
+
+# Install the package in development mode
+pip install -e .
+
+# Link your development version of the extension with JupyterLab
+jlpm run develop
+
+# For the jupyterlab-topbar-text extension
+jlpm run link
+
+# Rebuild extension TypeScript source after making changes
+jlpm run build
+```
+
+### Uninstall
+
+```bash
+pip uninstall jupyterlab-topbar
 ```

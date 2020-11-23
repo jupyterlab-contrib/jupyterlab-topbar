@@ -4,7 +4,7 @@ JupyterLab extension to display arbitrary text in the top bar
 
 ## Prerequisites
 
-* JupyterLab 1.0+
+- JupyterLab 1.0+
 
 ## Installation
 

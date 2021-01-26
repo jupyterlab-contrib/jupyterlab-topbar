@@ -4,6 +4,7 @@ include pyproject.toml
 include jupyter-config/jupyterlab-topbar.json
 
 include package.json
+include lerna.json
 include install.json
 include ts*.json
 

@@ -60,8 +60,8 @@ with open("README.md", "r") as fh:
 setup_args = dict(
     name=name,
     version=version,
-    url="https://github.com/jtpio/jupyterlab-topbar.git",
-    author="Jeremy Tuloup",
+    url="https://github.com/jupyterlab-contrib/jupyterlab-topbar.git",
+    author="jupyterlab-topbar contributors",
     description="JupyterLab extension to expose the top bar space",
     long_description= long_description,
     long_description_content_type="text/markdown",

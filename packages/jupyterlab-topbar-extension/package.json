@@ -7,12 +7,12 @@
     "jupyterlab",
     "jupyterlab-extension"
   ],
-  "homepage": "https://github.com/jtpio/jupyterlab-topbar",
+  "homepage": "https://github.com/jupyterlab-contrib/jupyterlab-topbar",
   "bugs": {
-    "url": "https://github.com/jtpio/jupyterlab-topbar"
+    "url": "https://github.com/jupyterlab-contrib/jupyterlab-topbar"
   },
   "license": "BSD-3-Clause",
-  "author": "Jeremy Tuloup",
+  "author": "jupyterlab-topbar contributors",
   "files": [
     "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
     "style/**/*.{css,eot,gif,html,jpg,json,png,svg,woff2,ttf}",
@@ -23,7 +23,7 @@
   "style": "style/index.css",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jtpio/jupyterlab-topbar.git"
+    "url": "https://github.com/jupyterlab-contrib/jupyterlab-topbar.git"
   },
   "scripts": {
     "build": "jlpm run build:lib && jlpm run build:labextension:dev",

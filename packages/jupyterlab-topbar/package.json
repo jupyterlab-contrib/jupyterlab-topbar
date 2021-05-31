@@ -7,12 +7,12 @@
     "jupyterlab",
     "jupyterlab-extension"
   ],
-  "homepage": "https://github.com/jtpio/jupyterlab-topbar",
+  "homepage": "https://github.com/jupyterlab-contrib/jupyterlab-topbar",
   "bugs": {
-    "url": "https://github.com/jtpio/jupyterlab-topbar/issues"
+    "url": "https://github.com/jupyterlab-contrib/jupyterlab-topbar/issues"
   },
   "license": "BSD-3-Clause",
-  "author": "Jeremy Tuloup",
+  "author": "jupyterlab-topbar contributors",
   "files": [
     "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
     "style/**/*.{css,eot,gif,html,jpg,json,png,svg,woff2,ttf}"
@@ -21,7 +21,7 @@
   "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jtpio/jupyterlab-topbar.git"
+    "url": "https://github.com/jupyterlab-contrib/jupyterlab-topbar.git"
   },
   "scripts": {
     "clean:src": "rimraf lib",

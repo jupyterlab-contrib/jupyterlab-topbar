@@ -1,9 +1,8 @@
 name: jupyterlab-topbar
 channels:
-- conda-forge/label/jupyterlab_rc
-- conda-forge/label/jupyterlab_server_rc
 - conda-forge
 dependencies:
 - jupyterlab=3
 - nodejs
-- nbresuse
+- jupyter-resource-usage
+- jupyterlab-system-monitor

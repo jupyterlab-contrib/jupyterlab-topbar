@@ -2,7 +2,7 @@
 
 [![Extension status](https://img.shields.io/badge/status-ready-success "ready to be used")](https://jupyterlab-contrib.github.io/)
 ![Github Actions Status](https://github.com/jupyterlab-contrib/jupyterlab-topbar/workflows/Build/badge.svg)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab-contrib/jupyterlab-topbar/stable?urlpath=lab)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab-contrib/jupyterlab-topbar/main?urlpath=lab)
 [![PyPI](https://img.shields.io/pypi/v/jupyterlab-topbar.svg)](https://pypi.org/project/jupyterlab-topbar)
 
 Monorepo to experiment with the top bar space in JupyterLab.
@@ -16,16 +16,16 @@ Inspired by Gnome Shell Top Bar indicators.
 ### Extensions
 
 - [jupyterlab-topbar-extension](./packages/jupyterlab-topbar-extension): generic extension to expose the top bar area
-- [jupyterlab-topbar-text](./packages/jupyterlab-topbar-text): add and edit custom text
-- [jupyterlab-system-monitor](https://github.com/jupyterlab-contrib/jupyterlab-system-monitor): show system metrics (memory usage)
+- [jupyterlab-topbar-text](https://github.com/jupyterlab-contrib/jupyterlab-topbar-text): add and edit custom text
+- [jupyterlab-system-monitor](https://github.com/jtpio/jupyterlab-system-monitor): show system metrics (memory usage)
 - [jupyterlab-logout](https://github.com/jupyterlab-contrib/jupyterlab-logout): add a "Log Out" button
-- [jupyterlab-theme-toggle](https://github.com/jupyterlab-contrib/jupyterlab-theme-toggle): switch between the Light and Dark themes
+- [jupyterlab-theme-toggle](https://github.com/jtpio/jupyterlab-theme-toggle): switch between the Light and Dark themes
 
 ## Try it online
 
 Try the extensions in your browser with Binder:
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab-contrib/jupyterlab-topbar/stable?urlpath=lab)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab-contrib/jupyterlab-topbar/main?urlpath=lab)
 
 ## Installation
 
@@ -36,7 +36,7 @@ Try the extensions in your browser with Binder:
 pip install jupyterlab-topbar
 
 # to install the topbar-text extension
-jupyter labextension install jupyterlab-topbar-text
+pip install jupyterlab-topbar-text
 ```
 
 ### JupyterLab 1.x and 2.x
@@ -47,7 +47,7 @@ jupyter labextension install jupyterlab-topbar-extension
 
 # system metrics
 jupyter labextension install jupyterlab-system-monitor
-pip install nbresuse
+pip install jupyter-resource-usage
 
 # custom text in the top bar
 jupyter labextension install jupyterlab-topbar-text

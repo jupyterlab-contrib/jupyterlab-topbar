@@ -11,8 +11,8 @@ on:
 defaults:
   run:
     shell: |
-      set -eux
       bash -l {0}
+      set -eux
 
 jobs:
   build:

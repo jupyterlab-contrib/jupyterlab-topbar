@@ -12,8 +12,8 @@ env:
 defaults:
   run:
     shell: |
-      set -eux
       bash -l {0}
+      set -eux
 
 jobs:
   build:
@@ -40,8 +40,6 @@ jobs:
     - name: Package the extension
       working-directory: packages/${{ matrix.extension }}-extension
       run: |
-        set -eux
-
         pip install build
         python -m build
         pip uninstall -y "jupyterlab_${{ matrix.extension }}" jupyterlab

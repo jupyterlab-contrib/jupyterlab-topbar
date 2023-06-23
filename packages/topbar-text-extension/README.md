@@ -1,6 +1,6 @@
 # jupyterlab-topbar-text
 
-[![Extension status](https://img.shields.io/badge/status-ready-success "ready to be used")](https://jupyterlab-contrib.github.io/)
+[![Extension status](https://img.shields.io/badge/status-ready-success 'ready to be used')](https://jupyterlab-contrib.github.io/)
 [![Github Actions Status](https://github.com/jupyterlab-contrib/jupyterlab-topbar-text/workflows/Build/badge.svg)](https://github.com/jupyterlab-contrib/jupyterlab-topbar-text/actions/workflows/build.yml)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab-contrib/jupyterlab-topbar-text/main?urlpath=lab)
 
@@ -10,7 +10,7 @@ JupyterLab extension to display arbitrary text in the top bar.
 
 ## Requirements
 
-* JupyterLab >= 4.0
+- JupyterLab >= 4.0
 
 ## Install
 

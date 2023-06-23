@@ -13,7 +13,7 @@ brought back into [jupyterlab-topbar](https://github.com/jtpio/jupyterlab-topbar
 
 ## Prerequisites
 
-* JupyterLab 1.0+
+- JupyterLab 1.0+
 
 ## Installation
 
@@ -39,7 +39,6 @@ To only install the keyboard shortcut (`Cmd/Ctrl+y` by default):
 ```bash
 jupyter labextension install jupyterlab-theme-toggle
 ```
-
 
 ## Development
 

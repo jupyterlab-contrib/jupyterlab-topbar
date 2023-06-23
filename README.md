@@ -46,7 +46,6 @@ pip install jupyterlab-logout
 pip install jupyterlab-theme-toggler
 ```
 
-
 ### JupyterLab 3.0
 
 Use pinned versions as the latest version is incompatible with JupyterLab 3.x

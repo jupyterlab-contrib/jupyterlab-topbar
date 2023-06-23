@@ -1,8 +1,0 @@
-name: jupyterlab-topbar
-channels:
-- conda-forge
-dependencies:
-- jupyterlab=3
-- nodejs
-- jupyter-resource-usage
-- jupyterlab-system-monitor

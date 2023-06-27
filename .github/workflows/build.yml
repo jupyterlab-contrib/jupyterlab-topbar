@@ -10,9 +10,7 @@ on:
 
 defaults:
   run:
-    shell: |
-      bash -l {0}
-      set -eux
+    shell: bash -l {0}
 
 jobs:
   build:
@@ -22,7 +20,6 @@ jobs:
       matrix:
         extension:
           - logout
-          - system-monitor
           - theme-toggler
           - topbar-text
 
@@ -38,14 +35,17 @@ jobs:
 
       - name: Lint the extension
         run: |
+          set -eux
           jlpm
           jlpm run lint:check
 
       - name: Build the extension
         working-directory: packages/${{ matrix.extension }}-extension
         run: |
+          set -eux
           python -m pip install .
 
           jupyter labextension list
           jupyter labextension list 2>&1 | grep -ie "@jupyterlab/${{ matrix.extension }}-extension.*OK"
+
           python -m jupyterlab.browser_check

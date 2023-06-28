@@ -19,10 +19,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        extension:
-          - logout
-          - theme-toggler
-          - topbar-text
+        include:
+          - extension: logout
+            name: logout
+          - extension: theme-toggler
+            name: theme_toggler
+          - extension: topbar-text
+            name: topbar_text
 
     steps:
     - name: Checkout
@@ -40,13 +43,13 @@ jobs:
         set -eux
         pip install build
         python -m build
-        pip uninstall -y "jupyterlab_${{ matrix.extension }}" jupyterlab
+        pip uninstall -y "jupyterlab_${{ matrix.name }}" jupyterlab
 
     - name: Upload extension packages
       uses: actions/upload-artifact@v3
       with:
         name: extension-artifacts
-        path: packages/${{ matrix.extension }}-extension/dist/jupyterlab_${{ matrix.extension }}*
+        path: packages/${{ matrix.extension }}-extension/dist/jupyterlab_${{ matrix.name }}*
         if-no-files-found: error
 
   install:

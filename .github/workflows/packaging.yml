@@ -62,9 +62,23 @@ jobs:
         python: ['3.8', '3.11']
         include:
           - python: '3.8'
-            dist: 'jupyterlab_*.whl'
+            extension: logout
+            dist: 'jupyterlab_logout*.tar.gz'
           - python: '3.11'
-            dist: 'jupyterlab_*.whl'
+            extension: logout
+            dist: 'jupyterlab_logout*.whl'
+          - python: '3.8'
+            extension: theme-toggler
+            dist: 'jupyterlab_theme_toggler*.tar.gz'
+          - python: '3.11'
+            extension: theme-toggler
+            dist: 'jupyterlab_theme_toggler*.whl'
+          - python: '3.8'
+            extension: topbar-text
+            dist: 'jupyterlab_topbar_text*.tar.gz'
+          - python: '3.11'
+            extension: topbar-text
+            dist: 'jupyterlab_topbar_text*.whl'
           - os: windows
             py_cmd: python
           - os: macos
@@ -81,16 +95,16 @@ jobs:
 
       - uses: actions/download-artifact@v3
         with:
-          name: dist ${{ github.run_number }}
-          path: ./dist
+          name: extension-artifacts
+          path: packages/${{ matrix.extension }}-extension/dist
 
-      - name: Install the prerequisites
+      - name: Install prerequisites
         run: |
           ${{ matrix.py_cmd }} -m pip install pip wheel
 
-      - name: Install the package
+      - name: Install package
         run: |
-          cd dist
+          cd packages/${{ matrix.extension }}-extension/dist
           ${{ matrix.py_cmd }} -m pip install -vv ${{ matrix.dist }}
 
       - name: Validate environment
@@ -98,7 +112,7 @@ jobs:
           ${{ matrix.py_cmd }} -m pip freeze
           ${{ matrix.py_cmd }} -m pip check
 
-      - name: Validate the install
+      - name: Validate install
         run: |
           jupyter labextension list
           jupyter labextension list 2>&1 | grep -ie "@jupyterlab/${{ matrix.extension }}-extension.*OK"

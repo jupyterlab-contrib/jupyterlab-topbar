@@ -529,31 +529,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/logout-extension@workspace:packages/logout-extension":
-  version: 0.0.0-use.local
-  resolution: "@jupyterlab/logout-extension@workspace:packages/logout-extension"
-  dependencies:
-    "@jupyterlab/application": ^4.0.0
-    "@jupyterlab/builder": ^4.0.0
-    "@typescript-eslint/eslint-plugin": ^5.55.0
-    "@typescript-eslint/parser": ^5.55.0
-    eslint: ^8.36.0
-    eslint-config-prettier: ^8.7.0
-    eslint-plugin-prettier: ^4.2.1
-    npm-run-all: ^4.1.5
-    prettier: ^2.8.4
-    rimraf: ^4.4.0
-    source-map-loader: ^1.0.2
-    style-loader: ^3.3.1
-    stylelint: ^14.9.1
-    stylelint-config-prettier: ^9.0.4
-    stylelint-config-recommended: ^8.0.0
-    stylelint-config-standard: ^26.0.0
-    stylelint-prettier: ^2.0.0
-    typescript: ^5.0.1
-  languageName: unknown
-  linkType: soft
-
 "@jupyterlab/nbformat@npm:^3.0.0 || ^4.0.0-alpha.21 || ^4.0.0, @jupyterlab/nbformat@npm:^4.0.2":
   version: 4.0.2
   resolution: "@jupyterlab/nbformat@npm:4.0.2"
@@ -672,63 +647,6 @@ __metadata:
   checksum: d792eb8fca00ac5ec7d5abcb3694db5c80706ec468aa4a9bef543f02a788d80ca2a9b81def0a846da14aed22dbd4ceffe0c95c0047c5025c2e5d69fc55f739b9
   languageName: node
   linkType: hard
-
-"@jupyterlab/theme-toggler-extension@workspace:packages/theme-toggler-extension":
-  version: 0.0.0-use.local
-  resolution: "@jupyterlab/theme-toggler-extension@workspace:packages/theme-toggler-extension"
-  dependencies:
-    "@blueprintjs/core": ^4.20.1
-    "@jupyterlab/application": ^4.0.0
-    "@jupyterlab/apputils": ^4.0.0
-    "@jupyterlab/builder": ^4.0.0
-    "@typescript-eslint/eslint-plugin": ^5.55.0
-    "@typescript-eslint/parser": ^5.55.0
-    eslint: ^8.36.0
-    eslint-config-prettier: ^8.7.0
-    eslint-plugin-prettier: ^4.2.1
-    npm-run-all: ^4.1.5
-    prettier: ^2.8.4
-    react: ^18.2.0
-    rimraf: ^4.4.0
-    source-map-loader: ^1.0.2
-    style-loader: ^3.3.1
-    stylelint: ^14.9.1
-    stylelint-config-prettier: ^9.0.4
-    stylelint-config-recommended: ^8.0.0
-    stylelint-config-standard: ^26.0.0
-    stylelint-prettier: ^2.0.0
-    typescript: ^5.0.1
-  languageName: unknown
-  linkType: soft
-
-"@jupyterlab/topbar-text-extension@workspace:packages/topbar-text-extension":
-  version: 0.0.0-use.local
-  resolution: "@jupyterlab/topbar-text-extension@workspace:packages/topbar-text-extension"
-  dependencies:
-    "@jupyterlab/application": ^4.0.0
-    "@jupyterlab/apputils": ^4.0.0
-    "@jupyterlab/builder": ^4.0.0
-    "@jupyterlab/coreutils": ^6.0.0
-    "@jupyterlab/settingregistry": ^4.0.0
-    "@lumino/widgets": ^2.0.0
-    "@typescript-eslint/eslint-plugin": ^5.55.0
-    "@typescript-eslint/parser": ^5.55.0
-    eslint: ^8.36.0
-    eslint-config-prettier: ^8.7.0
-    eslint-plugin-prettier: ^4.2.1
-    npm-run-all: ^4.1.5
-    prettier: ^2.8.4
-    rimraf: ^4.4.0
-    source-map-loader: ^1.0.2
-    style-loader: ^3.3.1
-    stylelint: ^14.9.1
-    stylelint-config-prettier: ^9.0.4
-    stylelint-config-recommended: ^8.0.0
-    stylelint-config-standard: ^26.0.0
-    stylelint-prettier: ^2.0.0
-    typescript: ^5.0.1
-  languageName: unknown
-  linkType: soft
 
 "@jupyterlab/translation@npm:^4.0.2":
   version: 4.0.2
@@ -6777,6 +6695,88 @@ __metadata:
   checksum: 2ad1b9fdcccae8b3d580fa6ced25de930eaa1ad154db21bbf8478a4d30bbbec7925b5f5ff29b933fba9412b16a17bd484a8da4fdb3663b5e27af95dd693bab2a
   languageName: node
   linkType: hard
+
+"jupyterlab-logout-extension@workspace:packages/logout-extension":
+  version: 0.0.0-use.local
+  resolution: "jupyterlab-logout-extension@workspace:packages/logout-extension"
+  dependencies:
+    "@jupyterlab/application": ^4.0.0
+    "@jupyterlab/builder": ^4.0.0
+    "@typescript-eslint/eslint-plugin": ^5.55.0
+    "@typescript-eslint/parser": ^5.55.0
+    eslint: ^8.36.0
+    eslint-config-prettier: ^8.7.0
+    eslint-plugin-prettier: ^4.2.1
+    npm-run-all: ^4.1.5
+    prettier: ^2.8.4
+    rimraf: ^4.4.0
+    source-map-loader: ^1.0.2
+    style-loader: ^3.3.1
+    stylelint: ^14.9.1
+    stylelint-config-prettier: ^9.0.4
+    stylelint-config-recommended: ^8.0.0
+    stylelint-config-standard: ^26.0.0
+    stylelint-prettier: ^2.0.0
+    typescript: ^5.0.1
+  languageName: unknown
+  linkType: soft
+
+"jupyterlab-theme-toggler-extension@workspace:packages/theme-toggler-extension":
+  version: 0.0.0-use.local
+  resolution: "jupyterlab-theme-toggler-extension@workspace:packages/theme-toggler-extension"
+  dependencies:
+    "@blueprintjs/core": ^4.20.1
+    "@jupyterlab/application": ^4.0.0
+    "@jupyterlab/apputils": ^4.0.0
+    "@jupyterlab/builder": ^4.0.0
+    "@typescript-eslint/eslint-plugin": ^5.55.0
+    "@typescript-eslint/parser": ^5.55.0
+    eslint: ^8.36.0
+    eslint-config-prettier: ^8.7.0
+    eslint-plugin-prettier: ^4.2.1
+    npm-run-all: ^4.1.5
+    prettier: ^2.8.4
+    react: ^18.2.0
+    rimraf: ^4.4.0
+    source-map-loader: ^1.0.2
+    style-loader: ^3.3.1
+    stylelint: ^14.9.1
+    stylelint-config-prettier: ^9.0.4
+    stylelint-config-recommended: ^8.0.0
+    stylelint-config-standard: ^26.0.0
+    stylelint-prettier: ^2.0.0
+    typescript: ^5.0.1
+  languageName: unknown
+  linkType: soft
+
+"jupyterlab-topbar-text-extension@workspace:packages/topbar-text-extension":
+  version: 0.0.0-use.local
+  resolution: "jupyterlab-topbar-text-extension@workspace:packages/topbar-text-extension"
+  dependencies:
+    "@jupyterlab/application": ^4.0.0
+    "@jupyterlab/apputils": ^4.0.0
+    "@jupyterlab/builder": ^4.0.0
+    "@jupyterlab/coreutils": ^6.0.0
+    "@jupyterlab/settingregistry": ^4.0.0
+    "@lumino/widgets": ^2.0.0
+    "@typescript-eslint/eslint-plugin": ^5.55.0
+    "@typescript-eslint/parser": ^5.55.0
+    eslint: ^8.36.0
+    eslint-config-prettier: ^8.7.0
+    eslint-plugin-prettier: ^4.2.1
+    npm-run-all: ^4.1.5
+    prettier: ^2.8.4
+    rimraf: ^4.4.0
+    source-map-loader: ^1.0.2
+    style-loader: ^3.3.1
+    stylelint: ^14.9.1
+    stylelint-config-prettier: ^9.0.4
+    stylelint-config-recommended: ^8.0.0
+    stylelint-config-standard: ^26.0.0
+    stylelint-prettier: ^2.0.0
+    typescript: ^5.0.1
+  languageName: unknown
+  linkType: soft
 
 "just-diff-apply@npm:^5.2.0":
   version: 5.5.0

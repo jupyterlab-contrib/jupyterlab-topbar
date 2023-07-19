@@ -1,5 +1,5 @@
 {
-  "name": "@jupyterlab/logout-extension",
+  "name": "jupyterlab-logout-extension",
   "version": "1.0.0",
   "description": "JupyterLab Logout Button",
   "keywords": [

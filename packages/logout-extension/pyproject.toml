@@ -37,8 +37,8 @@ artifacts = ["jupyterlab-logout/labextension"]
 exclude = [".github", "binder"]
 
 [tool.hatch.build.targets.wheel.shared-data]
-"jupyterlab-logout/labextension" = "share/jupyter/labextensions/@jupyterlab/logout-extension"
-"install.json" = "share/jupyter/labextensions/@jupyterlab/logout-extension/install.json"
+"jupyterlab-logout/labextension" = "share/jupyter/labextensions/jupyterlab-logout-extension"
+"install.json" = "share/jupyter/labextensions/jupyterlab-logout-extension/install.json"
 
 [tool.hatch.build.hooks.version]
 path = "jupyterlab-logout/_version.py"

@@ -5,7 +5,7 @@
     "TopBar": [
       {
         "name": "logout",
-        "command": "topbarcmds:logout",
+        "command": "jupyterlab-topbar:logout",
         "rank": 150
       }
     ]

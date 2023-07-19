@@ -37,8 +37,8 @@ artifacts = ["jupyterlab-theme-toggler/labextension"]
 exclude = [".github", "binder"]
 
 [tool.hatch.build.targets.wheel.shared-data]
-"jupyterlab-theme-toggler/labextension" = "share/jupyter/labextensions/@jupyterlab/theme-toggler-extension"
-"install.json" = "share/jupyter/labextensions/@jupyterlab/theme-toggler-extension/install.json"
+"jupyterlab-theme-toggler/labextension" = "share/jupyter/labextensions/jupyterlab-theme-toggler-extension"
+"install.json" = "share/jupyter/labextensions/jupyterlab-theme-toggler-extension/install.json"
 
 [tool.hatch.build.hooks.version]
 path = "jupyterlab-theme-toggler/_version.py"

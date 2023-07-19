@@ -18,7 +18,7 @@ import { Widget } from '@lumino/widgets';
 
 import '../style/index.css';
 
-const topbarTextPluginId = '@jupyterlab/topbar-text-extension:plugin';
+const topbarTextPluginId = 'jupyterlab-topbar-text-extension:plugin';
 
 const TOPBAR_TEXT = 'jp-TopBar-Text';
 
@@ -39,7 +39,7 @@ const extension: JupyterFrontEndPlugin<void> = {
     settingsRegistry: ISettingRegistry,
     toolbarRegistry: IToolbarWidgetRegistry
   ): Promise<void> => {
-    console.log('@jupyterlab/topbar-text-extension is activated!');
+    console.log('jupyterlab-topbar-text-extension is activated!');
 
     const settings = await settingsRegistry.load(extension.id);
     let text = settings.get('text').composite as string;

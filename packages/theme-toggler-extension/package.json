@@ -1,5 +1,5 @@
 {
-  "name": "@jupyterlab/theme-toggler-extension",
+  "name": "jupyterlab-theme-toggler-extension",
   "version": "1.0.0",
   "description": "JupyterLab Toolbar Theme Toggler",
   "keywords": [

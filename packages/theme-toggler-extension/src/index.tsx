@@ -21,7 +21,7 @@ import * as React from 'react';
 
 import '../style/index.css';
 
-const themeTogglerPluginId = '@jupyterlab/theme-toggler-extension:plugin';
+const themeTogglerPluginId = 'jupyterlab-theme-toggler-extension:plugin';
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -82,7 +82,7 @@ const extension: JupyterFrontEndPlugin<void> = {
     themeManager: IThemeManager,
     toolbarRegistry: IToolbarWidgetRegistry
   ): Promise<void> => {
-    console.log('@jupyterlab/theme-toggler-extension is activated!');
+    console.log('jupyterlab-theme-toggler-extension is activated!');
 
     // Get app commands
     const { commands } = app;

@@ -1,5 +1,5 @@
 {
-  "name": "@jupyterlab/topbar-text-extension",
+  "name": "jupyterlab-topbar-text-extension",
   "version": "1.0.0",
   "description": "JupyterLab extension to display arbitrary text in the top bar",
   "keywords": [

@@ -1,9 +1,5 @@
 # jupyterlab-theme-toggle
 
-![Github Actions Status](https://github.com/jtpio/jupyterlab-theme-toggle/workflows/CI/badge.svg)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jtpio/jupyterlab-theme-toggle/stable?urlpath=lab)
-[![npm](https://img.shields.io/npm/v/jupyterlab-theme-toggle.svg)](https://www.npmjs.com/package/jupyterlab-theme-toggle)
-
 JupyterLab extension to toggle the theme in the Top Bar area.
 
 ![screencast](./doc/screencast.gif)

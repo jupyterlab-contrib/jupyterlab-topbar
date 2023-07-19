@@ -1,8 +1,5 @@
 # jupyterlab-logout
 
-[![Extension status](https://img.shields.io/badge/status-ready-success 'ready to be used')](https://jupyterlab-contrib.github.io/)
-![Github Actions Status](https://github.com/jupyterlab-contrib/jupyterlab-logout/workflows/Build/badge.svg)
-
 Logout Button for JupyterLab
 
 ![screenshot](./doc/screenshot.png)

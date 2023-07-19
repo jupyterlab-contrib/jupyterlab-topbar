@@ -1,7 +1,7 @@
 # JupyterLab Top Bar Extensions
 
 [![Extension status](https://img.shields.io/badge/status-ready-success 'ready to be used')](https://jupyterlab-contrib.github.io/)
-![Github Actions Status](https://github.com/jupyterlab-contrib/jupyterlab-topbar/workflows/Build/badge.svg)
+[![Github Actions Status](https://github.com/jupyterlab-contrib/jupyterlab-topbar/workflows/Build/badge.svg)](https://github.com/jupyterlab-contrib/jupyterlab-topbar/actions/workflows/build.yml)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab-contrib/jupyterlab-topbar/main?urlpath=lab)
 [![PyPI](https://img.shields.io/pypi/v/jupyterlab-topbar.svg)](https://pypi.org/project/jupyterlab-topbar)
 
@@ -30,14 +30,13 @@ Try the extensions in your browser with Binder:
 
 ### JupyterLab 4.x
 
-Use latest versions of the extensions
+Use latest versions of the extensions. **Note** that `jupyterlab-system-monitor` 
+extension will be distributed along with `jupyter-resource-usage` package for 
+JupyterLab 4.x
 
 ```bash
 # topbar text extension
 pip install jupyterlab-topbar-text
-
-# system monitor extension
-pip install jupyterlab-system-monitor
 
 # logout extension
 pip install jupyterlab-logout
@@ -134,5 +133,5 @@ jupyter lab build --minimize=False
 ### Uninstall
 
 ```bash
-pip uninstall jupyterlab_topbar_text jupyterlab_system_monitor jupyterlab_logout jupyterlab_theme_toggler
+pip uninstall jupyterlab_topbar_text jupyterlab_logout jupyterlab_theme_toggler
 ```

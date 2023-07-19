@@ -30,8 +30,8 @@ Try the extensions in your browser with Binder:
 
 ### JupyterLab 4.x
 
-Use latest versions of the extensions. **Note** that `jupyterlab-system-monitor` 
-extension will be distributed along with `jupyter-resource-usage` package for 
+Use latest versions of the extensions. **Note** that `jupyterlab-system-monitor`
+extension will be distributed along with `jupyter-resource-usage` package for
 JupyterLab 4.x
 
 ```bash

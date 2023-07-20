@@ -115,4 +115,4 @@ jobs:
       - name: Validate install
         run: |
           jupyter labextension list
-          jupyter labextension list 2>&1 | grep -ie "jupyterlab-${{ matrix.extension }}-extension.*OK"
+          jupyter labextension list 2>&1 | grep -ie "jupyterlab-${{ matrix.extension }}.*OK"

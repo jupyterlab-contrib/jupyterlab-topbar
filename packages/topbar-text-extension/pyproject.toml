@@ -37,8 +37,8 @@ artifacts = ["jupyterlab-topbar-text/labextension"]
 exclude = [".github", "binder"]
 
 [tool.hatch.build.targets.wheel.shared-data]
-"jupyterlab-topbar-text/labextension" = "share/jupyter/labextensions/jupyterlab-topbar-text-extension"
-"install.json" = "share/jupyter/labextensions/jupyterlab-topbar-text-extension/install.json"
+"jupyterlab-topbar-text/labextension" = "share/jupyter/labextensions/jupyterlab-topbar-text"
+"install.json" = "share/jupyter/labextensions/jupyterlab-topbar-text/install.json"
 
 [tool.hatch.build.hooks.version]
 path = "jupyterlab-topbar-text/_version.py"

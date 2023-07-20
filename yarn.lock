@@ -6696,9 +6696,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jupyterlab-logout-extension@workspace:packages/logout-extension":
+"jupyterlab-logout@workspace:packages/logout-extension":
   version: 0.0.0-use.local
-  resolution: "jupyterlab-logout-extension@workspace:packages/logout-extension"
+  resolution: "jupyterlab-logout@workspace:packages/logout-extension"
   dependencies:
     "@jupyterlab/application": ^4.0.0
     "@jupyterlab/builder": ^4.0.0
@@ -6721,9 +6721,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"jupyterlab-theme-toggler-extension@workspace:packages/theme-toggler-extension":
+"jupyterlab-theme-toggler@workspace:packages/theme-toggler-extension":
   version: 0.0.0-use.local
-  resolution: "jupyterlab-theme-toggler-extension@workspace:packages/theme-toggler-extension"
+  resolution: "jupyterlab-theme-toggler@workspace:packages/theme-toggler-extension"
   dependencies:
     "@blueprintjs/core": ^4.20.1
     "@jupyterlab/application": ^4.0.0
@@ -6749,9 +6749,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"jupyterlab-topbar-text-extension@workspace:packages/topbar-text-extension":
+"jupyterlab-topbar-text@workspace:packages/topbar-text-extension":
   version: 0.0.0-use.local
-  resolution: "jupyterlab-topbar-text-extension@workspace:packages/topbar-text-extension"
+  resolution: "jupyterlab-topbar-text@workspace:packages/topbar-text-extension"
   dependencies:
     "@jupyterlab/application": ^4.0.0
     "@jupyterlab/apputils": ^4.0.0

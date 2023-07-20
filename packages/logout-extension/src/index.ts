@@ -8,14 +8,14 @@ import '@jupyterlab/application/style/buttons.css';
 
 import '../style/index.css';
 
-const logoutPluginId = 'jupyterlab-logout-extension:plugin';
+const logoutPluginId = 'jupyterlab-logout:plugin';
 
 const extension: JupyterFrontEndPlugin<void> = {
   id: logoutPluginId,
   autoStart: true,
   requires: [IRouter],
   activate: async (app: JupyterFrontEnd, router: IRouter): Promise<void> => {
-    console.log('jupyterlab-logout-extension is activated!');
+    console.log('jupyterlab-logout extension is activated!');
 
     // Get app commands
     const { commands } = app;

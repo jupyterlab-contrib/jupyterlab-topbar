@@ -7,6 +7,9 @@ node_modules/
 *.egg-info/
 .ipynb_checkpoints
 *.tsbuildinfo
+jupyterlab-logout/labextension
+# Version file is handled by hatchling
+jupyterlab-logout/_version.py
 
 # Yarn cache
 .yarn/

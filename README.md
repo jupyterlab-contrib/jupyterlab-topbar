@@ -1,7 +1,7 @@
-# JupyterLab Top Bar
+# JupyterLab Top Bar Extensions
 
-[![Extension status](https://img.shields.io/badge/status-ready-success "ready to be used")](https://jupyterlab-contrib.github.io/)
-![Github Actions Status](https://github.com/jupyterlab-contrib/jupyterlab-topbar/workflows/Build/badge.svg)
+[![Extension status](https://img.shields.io/badge/status-ready-success 'ready to be used')](https://jupyterlab-contrib.github.io/)
+[![Github Actions Status](https://github.com/jupyterlab-contrib/jupyterlab-topbar/workflows/Build/badge.svg)](https://github.com/jupyterlab-contrib/jupyterlab-topbar/actions/workflows/build.yml)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/jupyterlab-contrib/jupyterlab-topbar/main?urlpath=lab)
 [![PyPI](https://img.shields.io/pypi/v/jupyterlab-topbar.svg)](https://pypi.org/project/jupyterlab-topbar)
 
@@ -15,11 +15,10 @@ Inspired by Gnome Shell Top Bar indicators.
 
 ### Extensions
 
-- [jupyterlab-topbar-extension](./packages/jupyterlab-topbar-extension): generic extension to expose the top bar area
-- [jupyterlab-topbar-text](https://github.com/jupyterlab-contrib/jupyterlab-topbar-text): add and edit custom text
-- [jupyterlab-system-monitor](https://github.com/jtpio/jupyterlab-system-monitor): show system metrics (memory usage)
-- [jupyterlab-logout](https://github.com/jupyterlab-contrib/jupyterlab-logout): add a "Log Out" button
-- [jupyterlab-theme-toggle](https://github.com/jtpio/jupyterlab-theme-toggle): switch between the Light and Dark themes
+- [jupyterlab-topbar-text](./packages/topbar-text-extension): add and edit custom text
+- [jupyterlab-system-monitor](./packages/system-monitor-extension): show system metrics (memory usage)
+- [jupyterlab-logout](./packages/logout-extension): add a "Log Out" button
+- [jupyterlab-theme-toggle](./packages/theme-toggler-extension): switch between the Light and Dark themes
 
 ## Try it online
 
@@ -29,14 +28,39 @@ Try the extensions in your browser with Binder:
 
 ## Installation
 
-### JupyterLab 3.0
+### JupyterLab 4.x
+
+Use latest versions of the extensions. **Note** that `jupyterlab-system-monitor`
+extension will be distributed along with `jupyter-resource-usage` package for
+JupyterLab 4.x
 
 ```bash
-# container extension
-pip install jupyterlab-topbar
-
-# to install the topbar-text extension
+# topbar text extension
 pip install jupyterlab-topbar-text
+
+# logout extension
+pip install jupyterlab-logout
+
+# theme toggler extension
+pip install jupyterlab-theme-toggler
+```
+
+### JupyterLab 3.0
+
+Use pinned versions as the latest version is incompatible with JupyterLab 3.x
+
+```bash
+# topbar text extension
+pip install jupyterlab-topbar-text==0.6.2
+
+# system monitor extension
+pip install jupyterlab-system-monitor==0.8.0
+
+# logout extension
+pip install jupyterlab-logout==0.5.0
+
+# theme toggler extension. Install it as labextension
+jupyter labextension install jupyterlab-topbar-extension jupyterlab-theme-toggle
 ```
 
 ### JupyterLab 1.x and 2.x
@@ -71,29 +95,43 @@ jupyter labextension install jupyterlab-topbar-extension \
 
 ## Development
 
+Note: You will need NodeJS to build the extension package.
+
+The `jlpm` command is JupyterLab's pinned version of
+[yarn](https://yarnpkg.com/) that is installed with JupyterLab. You may use
+`yarn` or `npm` in lieu of `jlpm` below.
+
 ```bash
-# create a new conda environment
-conda create -n jupyterlab-topbar -c conda-forge jupyterlab nodejs -y
-conda activate jupyterlab-topbar
-
-# Install dependencies
-jlpm
-
-# Install the package in development mode
+# Clone the repo to your local environment
+# Change directory into the package that we want to develop
+cd packages/<extension_name>
+# Install package in development mode
 pip install -e .
-
 # Link your development version of the extension with JupyterLab
-jlpm run develop
-
-# For the jupyterlab-topbar-text extension
-jlpm run link
-
-# Rebuild extension TypeScript source after making changes
+jupyter labextension develop . --overwrite
+# Rebuild extension Typescript source after making changes
 jlpm run build
+```
+
+You can watch the source directory and run JupyterLab at the same time in different terminals to watch for changes in the extension's source and automatically rebuild the extension.
+
+```bash
+# Watch the source directory in one terminal, automatically rebuilding when needed
+jlpm run watch
+# Run JupyterLab in another terminal
+jupyter lab
+```
+
+With the watch command running, every saved change will immediately be built locally and available in your running JupyterLab. Refresh JupyterLab to load the change in your browser (you may need to wait several seconds for the extension to be rebuilt).
+
+By default, the `jlpm run build` command generates the source maps for this extension to make it easier to debug using the browser dev tools. To also generate source maps for the JupyterLab core extensions, you can run the following command:
+
+```bash
+jupyter lab build --minimize=False
 ```
 
 ### Uninstall
 
 ```bash
-pip uninstall jupyterlab-topbar
+pip uninstall jupyterlab_topbar_text jupyterlab_logout jupyterlab_theme_toggler
 ```

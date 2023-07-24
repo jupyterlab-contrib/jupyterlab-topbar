@@ -7,6 +7,9 @@ node_modules/
 *.egg-info/
 .ipynb_checkpoints
 *.tsbuildinfo
+jupyterlab-theme-toggler/labextension
+# Version file is handled by hatchling
+jupyterlab-theme-toggler/_version.py
 
 # Yarn cache
 .yarn/

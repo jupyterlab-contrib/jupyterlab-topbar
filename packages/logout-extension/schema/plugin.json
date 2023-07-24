@@ -1,0 +1,16 @@
+{
+  "title": "User Menu Bar",
+  "description": "User Menu Bar settings.",
+  "jupyter.lab.toolbars": {
+    "TopBar": [
+      {
+        "name": "logout",
+        "command": "jupyterlab-topbar:logout",
+        "rank": 150
+      }
+    ]
+  },
+  "properties": {},
+  "additionalProperties": false,
+  "type": "object"
+}

@@ -16,38 +16,41 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - extension: logout
+            name: logout
+          - extension: theme-toggler
+            name: theme_toggler
+          - extension: topbar-text
+            name: topbar_text
+
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
-    - name: Install node
-      uses: actions/setup-node@v1
-      with:
-       node-version: '14.x'
-    - name: Install Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'
-        architecture: 'x64'
+      uses: actions/checkout@v3
+
+    - name: Base Setup
+      uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
+
     - name: Install dependencies
+      run: python -m pip install -U "jupyterlab>=4.0.0,<5"
+
+    - name: Package the extension
+      working-directory: packages/${{ matrix.extension }}-extension
       run: |
-        python -m pip install --upgrade pip wheel
-        python -m pip install setuptools jupyter_packaging "jupyterlab>=3,<4"
-    - name: Build pypi distributions
-      run: |
-        python setup.py sdist bdist_wheel
-    - name: Build npm distributions
-      run: |
-        jlpm lerna exec -- npm pack
-        cp packages/*/*.tgz dist
-    - name: Build checksum file
-      run: |
-        cd dist
-        sha256sum * | tee SHA256SUMS
-    - name: Upload distributions
-      uses: actions/upload-artifact@v2
+        set -eux
+        pip install build
+        python -m build
+        pip uninstall -y "jupyterlab_${{ matrix.name }}" jupyterlab
+
+    - name: Upload extension packages
+      uses: actions/upload-artifact@v3
       with:
-        name: dist ${{ github.run_number }}
-        path: ./dist
+        name: extension-artifacts
+        path: packages/${{ matrix.extension }}-extension/dist/jupyterlab_${{ matrix.name }}*
+        if-no-files-found: error
 
   install:
     runs-on: ${{ matrix.os }}-latest
@@ -56,41 +59,60 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu, macos, windows]
-        python: ['3.6', '3.9']
+        python: ['3.8', '3.11']
         include:
-          - python: '3.6'
-            dist: 'jupyterlab-topbar*.tar.gz'
-          - python: '3.9'
-            dist: 'jupyterlab_topbar*.whl'
+          - python: '3.8'
+            extension: logout
+            dist: 'jupyterlab_logout*.tar.gz'
+          - python: '3.11'
+            extension: logout
+            dist: 'jupyterlab_logout*.whl'
+          - python: '3.8'
+            extension: theme-toggler
+            dist: 'jupyterlab_theme_toggler*.tar.gz'
+          - python: '3.11'
+            extension: theme-toggler
+            dist: 'jupyterlab_theme_toggler*.whl'
+          - python: '3.8'
+            extension: topbar-text
+            dist: 'jupyterlab_topbar_text*.tar.gz'
+          - python: '3.11'
+            extension: topbar-text
+            dist: 'jupyterlab_topbar_text*.whl'
           - os: windows
             py_cmd: python
           - os: macos
             py_cmd: python3
           - os: ubuntu
             py_cmd: python
+
     steps:
       - name: Install Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
           architecture: 'x64'
-      - uses: actions/download-artifact@v2
+
+      - uses: actions/download-artifact@v3
         with:
-          name: dist ${{ github.run_number }}
-          path: ./dist
-      - name: Install the prerequisites
+          name: extension-artifacts
+          path: packages/${{ matrix.extension }}-extension/dist
+
+      - name: Install prerequisites
         run: |
           ${{ matrix.py_cmd }} -m pip install pip wheel
-      - name: Install the package
+
+      - name: Install package
         run: |
-          cd dist
+          cd packages/${{ matrix.extension }}-extension/dist
           ${{ matrix.py_cmd }} -m pip install -vv ${{ matrix.dist }}
+
       - name: Validate environment
         run: |
           ${{ matrix.py_cmd }} -m pip freeze
           ${{ matrix.py_cmd }} -m pip check
-      - name: Validate the install
+
+      - name: Validate install
         run: |
           jupyter labextension list
-          jupyter labextension list 2>&1 | grep -ie "jupyterlab-topbar.*enabled.*ok" -
-
+          jupyter labextension list 2>&1 | grep -ie "jupyterlab-${{ matrix.extension }}.*OK"

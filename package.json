@@ -1,33 +1,40 @@
 {
   "private": true,
-  "scripts": {
-    "clean": "lerna run clean",
-    "clean:all": "lerna run clean:all",
-    "build": "lerna run build",
-    "build:prod": "lerna run build:prod",
-    "develop": "jupyter labextension develop . --overwrite",
-    "link": "lerna run link && jupyter lab build",
-    "lint": "jlpm run eslint && jlpm run prettier",
-    "lint:check": "jlpm run eslint:check && jlpm run prettier:check",
-    "eslint": "eslint . --ext .ts,.tsx --fix",
-    "eslint:check": "eslint . --ext .ts,.tsx",
-    "prettier": "prettier --write \"**/*{.ts,.tsx,.js,.jsx,.css,.json,.md}\"",
-    "prettier:check": "prettier --list-different \"**/*{.ts,.tsx,.js,.jsx,.css,.json,.md}\"",
-    "updated": "lerna updated",
-    "publish": "yarn run clean && yarn run build && lerna publish -m \"Publish npm packages\""
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.7.0",
-    "@typescript-eslint/parser": "^4.7.0",
-    "eslint": "^7.13.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "lerna": "^3.10.7",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2",
-    "rimraf": "^3.0.2"
-  },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "build": "lerna run --parallel build",
+    "build-py": "rimraf dist && mkdir -p dist && lerna run --parallel clean:all && lerna exec --concurrency 4 -- python -m build && lerna exec --concurrency 4 -- mv ./dist/jupyterlab* ../../dist/",
+    "build:prod": "lerna run --parallel build:prod",
+    "eslint": "eslint . --ext .ts,.tsx --fix",
+    "eslint:check": "eslint . --ext .ts,.tsx",
+    "install-ext": "lerna run build:labextension:dev",
+    "install-py": "lerna exec --concurrency 4 -- python -m pip install -e .",
+    "lint": "jlpm && jlpm prettier && jlpm eslint && jlpm stylelint",
+    "lint:check": "jlpm prettier:check && jlpm eslint:check && jlpm stylelint:check",
+    "prettier": "prettier --write \"**/*{.ts,.tsx,.js,.jsx,.css,.json,.md}\"",
+    "prettier:check": "prettier --list-different \"**/*{.ts,.tsx,.js,.jsx,.css,.json,.md}\"",
+    "stylelint": "jlpm stylelint:check --fix",
+    "stylelint:check": "stylelint --cache \"packages/*/style/**/*.css\"",
+    "stylelint:files": "stylelint --fix",
+    "update-dependency": "update-dependency --lerna",
+    "watch": "lerna run --parallel watch"
+  },
+  "devDependencies": {
+    "@jupyterlab/buildutils": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "lerna": "^6.6.0",
+    "prettier": "^2.8.7",
+    "rimraf": "^4.4.1",
+    "stylelint": "^14.9.1",
+    "stylelint-config-prettier": "^9.0.4",
+    "stylelint-config-recommended": "^8.0.0",
+    "stylelint-config-standard": "^26.0.0",
+    "stylelint-prettier": "^2.0.0"
+  }
 }

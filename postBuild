@@ -1,3 +1,5 @@
-set -xe
+#!/bin/bash
 
-pip install .
+jlpm
+jlpm install-py
+

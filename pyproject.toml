@@ -38,6 +38,7 @@ tag-message = "[ci skip] Release {tag_name}"
 
 [tool.jupyter-releaser.hooks]
 before-build-npm = [
+    "pip install 'jupyterlab>=4.0.0,<5'",
     "jlpm",
     "jlpm run build:prod",
 ]

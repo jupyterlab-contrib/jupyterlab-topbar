@@ -18,7 +18,6 @@ fields = ["description", "authors", "urls"]
 [tool.jupyter-releaser.options]
 version-cmd = "hatch version"
 python-packages = [
-    ".:jupyterlab_topbar_extensions",
     "packages/logout-extension:jupyterlab_logout",
     "packages/topbar-text-extension:jupyterlab_topbar_text",
     "packages/theme-toggler-extension:jupyterlab_theme-toggler",

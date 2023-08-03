@@ -33,24 +33,24 @@ source = "nodejs"
 fields = ["description", "authors", "urls"]
 
 [tool.hatch.build.targets.sdist]
-artifacts = ["jupyterlab-logout/labextension"]
+artifacts = ["jupyterlab_logout/labextension"]
 exclude = [".github", "binder"]
 
 [tool.hatch.build.targets.wheel.shared-data]
-"jupyterlab-logout/labextension" = "share/jupyter/labextensions/jupyterlab-logout"
+"jupyterlab_logout/labextension" = "share/jupyter/labextensions/jupyterlab-logout"
 "install.json" = "share/jupyter/labextensions/jupyterlab-logout/install.json"
 
 [tool.hatch.build.hooks.version]
-path = "jupyterlab-logout/_version.py"
+path = "jupyterlab_logout/_version.py"
 
 [tool.hatch.build.hooks.jupyter-builder]
 dependencies = ["hatch-jupyter-builder>=0.5"]
 build-function = "hatch_jupyter_builder.npm_builder"
 ensured-targets = [
-    "jupyterlab-logout/labextension/static/style.js",
-    "jupyterlab-logout/labextension/package.json",
+    "jupyterlab_logout/labextension/static/style.js",
+    "jupyterlab_logout/labextension/package.json",
 ]
-skip-if-exists = ["jupyterlab-logout/labextension/static/style.js"]
+skip-if-exists = ["jupyterlab_logout/labextension/static/style.js"]
 
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 build_cmd = "build:prod"
@@ -60,7 +60,7 @@ npm = ["jlpm"]
 build_cmd = "install:extension"
 npm = ["jlpm"]
 source_dir = "src"
-build_dir = "jupyterlab-logout/labextension"
+build_dir = "jupyterlab_logout/labextension"
 
 [tool.jupyter-releaser.options]
 version_cmd = "hatch version"

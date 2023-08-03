@@ -33,24 +33,24 @@ source = "nodejs"
 fields = ["description", "authors", "urls"]
 
 [tool.hatch.build.targets.sdist]
-artifacts = ["jupyterlab-theme-toggler/labextension"]
+artifacts = ["jupyterlab_theme_toggler/labextension"]
 exclude = [".github", "binder"]
 
 [tool.hatch.build.targets.wheel.shared-data]
-"jupyterlab-theme-toggler/labextension" = "share/jupyter/labextensions/jupyterlab-theme-toggler"
+"jupyterlab_theme_toggler/labextension" = "share/jupyter/labextensions/jupyterlab-theme-toggler"
 "install.json" = "share/jupyter/labextensions/jupyterlab-theme-toggler/install.json"
 
 [tool.hatch.build.hooks.version]
-path = "jupyterlab-theme-toggler/_version.py"
+path = "jupyterlab_theme_toggler/_version.py"
 
 [tool.hatch.build.hooks.jupyter-builder]
 dependencies = ["hatch-jupyter-builder>=0.5"]
 build-function = "hatch_jupyter_builder.npm_builder"
 ensured-targets = [
-    "jupyterlab-theme-toggler/labextension/static/style.js",
-    "jupyterlab-theme-toggler/labextension/package.json",
+    "jupyterlab_theme_toggler/labextension/static/style.js",
+    "jupyterlab_theme_toggler/labextension/package.json",
 ]
-skip-if-exists = ["jupyterlab-theme-toggler/labextension/static/style.js"]
+skip-if-exists = ["jupyterlab_theme_toggler/labextension/static/style.js"]
 
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 build_cmd = "build:prod"
@@ -60,7 +60,7 @@ npm = ["jlpm"]
 build_cmd = "install:extension"
 npm = ["jlpm"]
 source_dir = "src"
-build_dir = "jupyterlab-theme-toggler/labextension"
+build_dir = "jupyterlab_theme_toggler/labextension"
 
 [tool.jupyter-releaser.options]
 version_cmd = "hatch version"

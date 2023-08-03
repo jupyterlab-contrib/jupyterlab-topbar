@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab-logout",
-  "version": "1.0.0",
+  "version": "0.5.0",
   "description": "JupyterLab Logout Button",
   "keywords": [
     "jupyter",
@@ -37,7 +37,7 @@
     "build:prod": "jlpm clean && jlpm build:lib:prod && jlpm build:labextension",
     "clean": "jlpm clean:lib",
     "clean:all": "jlpm clean:lib && jlpm clean:labextension && jlpm clean:lintcache",
-    "clean:labextension": "rimraf jupyterlab-logout/labextension jupyterlab-logout/_version.py",
+    "clean:labextension": "rimraf jupyterlab_logout/labextension jupyterlab_logout/_version.py",
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
     "clean:lintcache": "rimraf .eslintcache .stylelintcache",
     "eslint": "jlpm eslint:check --fix",
@@ -79,6 +79,6 @@
   "jupyterlab": {
     "extension": true,
     "schemaDir": "schema",
-    "outputDir": "jupyterlab-logout/labextension"
+    "outputDir": "jupyterlab_logout/labextension"
   }
 }

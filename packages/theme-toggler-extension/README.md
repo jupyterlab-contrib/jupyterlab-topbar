@@ -16,7 +16,7 @@ brought back into [jupyterlab-topbar](https://github.com/jtpio/jupyterlab-topbar
 ### JupyterLab 4.x
 
 Starting from JupyterLab 4.0, extension can be distributed as a Python package.
-Use version `1.0.0` as either versions are incompatible with JupyterLab 4
+Use version `1.0.0` as other versions are incompatible with JupyterLab 4
 
 ```bash
 pip install jupyterlab-theme-toggle==1.0.0

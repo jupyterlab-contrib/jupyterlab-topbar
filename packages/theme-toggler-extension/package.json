@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab-theme-toggler",
-  "version": "1.0.0",
+  "version": "0.6.1",
   "description": "JupyterLab Toolbar Theme Toggler",
   "keywords": [
     "jupyter",
@@ -37,7 +37,7 @@
     "build:prod": "jlpm clean && jlpm build:lib:prod && jlpm build:labextension",
     "clean": "jlpm clean:lib",
     "clean:all": "jlpm clean:lib && jlpm clean:labextension && jlpm clean:lintcache",
-    "clean:labextension": "rimraf jupyterlab-theme-toggler/labextension jupyterlab-theme-toggler/_version.py",
+    "clean:labextension": "rimraf jupyterlab_theme_toggler/labextension jupyterlab_theme_toggler/_version.py",
     "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
     "clean:lintcache": "rimraf .eslintcache .stylelintcache",
     "eslint": "jlpm eslint:check --fix",
@@ -82,6 +82,6 @@
   "jupyterlab": {
     "extension": true,
     "schemaDir": "schema",
-    "outputDir": "jupyterlab-theme-toggler/labextension"
+    "outputDir": "jupyterlab_theme_toggler/labextension"
   }
 }

@@ -33,24 +33,24 @@ source = "nodejs"
 fields = ["description", "authors", "urls"]
 
 [tool.hatch.build.targets.sdist]
-artifacts = ["jupyterlab-topbar-text/labextension"]
+artifacts = ["jupyterlab_topbar_text/labextension"]
 exclude = [".github", "binder"]
 
 [tool.hatch.build.targets.wheel.shared-data]
-"jupyterlab-topbar-text/labextension" = "share/jupyter/labextensions/jupyterlab-topbar-text"
+"jupyterlab_topbar_text/labextension" = "share/jupyter/labextensions/jupyterlab-topbar-text"
 "install.json" = "share/jupyter/labextensions/jupyterlab-topbar-text/install.json"
 
 [tool.hatch.build.hooks.version]
-path = "jupyterlab-topbar-text/_version.py"
+path = "jupyterlab_topbar_text/_version.py"
 
 [tool.hatch.build.hooks.jupyter-builder]
 dependencies = ["hatch-jupyter-builder>=0.5"]
 build-function = "hatch_jupyter_builder.npm_builder"
 ensured-targets = [
-    "jupyterlab-topbar-text/labextension/static/style.js",
-    "jupyterlab-topbar-text/labextension/package.json",
+    "jupyterlab_topbar_text/labextension/static/style.js",
+    "jupyterlab_topbar_text/labextension/package.json",
 ]
-skip-if-exists = ["jupyterlab-topbar-text/labextension/static/style.js"]
+skip-if-exists = ["jupyterlab_topbar_text/labextension/static/style.js"]
 
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 build_cmd = "build:prod"
@@ -60,7 +60,7 @@ npm = ["jlpm"]
 build_cmd = "install:extension"
 npm = ["jlpm"]
 source_dir = "src"
-build_dir = "jupyterlab-topbar-text/labextension"
+build_dir = "jupyterlab_topbar_text/labextension"
 
 [tool.jupyter-releaser.options]
 version_cmd = "hatch version"

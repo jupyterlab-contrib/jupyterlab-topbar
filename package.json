@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab-topbar-extensions",
-  "version": "0.6.1",
+  "version": "1.0.0",
   "private": true,
   "files": [],
   "workspaces": [
@@ -39,5 +39,32 @@
     "stylelint-config-recommended": "^8.0.0",
     "stylelint-config-standard": "^26.0.0",
     "stylelint-prettier": "^2.0.0"
+  },
+  "jupyter-releaser": {
+    "options": {
+      "dist-dir": "dist",
+      "version-cmd": "hatch version",
+      "python-packages": [
+        "packages/logout-extension:jupyterlab_logout",
+        "packages/topbar-text-extension:jupyterlab_topbar_text",
+        "packages/theme-toggler-extension:jupyterlab_theme-toggler"
+      ],
+      "npm-install-options": "--legacy-peer-deps",
+      "pydist-extra-check-cmds": [
+        "pipx run 'validate-pyproject[all]' packages/*/pyproject.toml",
+        "pipx run check-wheel-contents --config packages/logout-extension/pyproject.toml {dist_dir}/jupyterlab_logout*.whl",
+        "pipx run check-wheel-contents --config packages/topbar-text-extension/pyproject.toml {dist_dir}/jupyterlab_topbar_text*.whl",
+        "pipx run check-wheel-contents --config packages/theme-toggler-extension/pyproject.toml {dist_dir}/jupyterlab_theme_toggler*.whl"
+      ],
+      "release-message": "[ci skip] Publish {version}",
+      "tag-message": "[ci skip] Release {tag_name}"
+    },
+    "hooks": {
+      "before-build-npm": [
+        "pip install 'jupyterlab>=4.0.0,<5'",
+        "jlpm",
+        "jlpm run build:prod"
+      ]
+    }
   }
 }

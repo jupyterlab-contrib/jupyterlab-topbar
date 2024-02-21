@@ -84,5 +84,8 @@
     "extension": true,
     "schemaDir": "schema",
     "outputDir": "jupyterlab_topbar_text/labextension"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

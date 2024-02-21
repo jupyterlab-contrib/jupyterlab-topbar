@@ -11,12 +11,11 @@ Similar to the [status bar](https://github.com/jupyterlab/jupyterlab/tree/master
 
 Inspired by Gnome Shell Top Bar indicators.
 
-![screencast](./doc/screencast.gif)
+![a screenshot of the topbar extensions in JupyterLab](https://github.com/jupyterlab-contrib/jupyterlab-topbar/assets/591645/b620d58e-869d-4b8a-9e7c-47143116cc99)
 
 ### Extensions
 
 - [jupyterlab-topbar-text](./packages/topbar-text-extension): add and edit custom text
-- [jupyterlab-system-monitor](./packages/system-monitor-extension): show system metrics (memory usage)
 - [jupyterlab-logout](./packages/logout-extension): add a "Log Out" button
 - [jupyterlab-theme-toggle](./packages/theme-toggler-extension): switch between the Light and Dark themes
 

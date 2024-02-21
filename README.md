@@ -11,7 +11,7 @@ Similar to the [status bar](https://github.com/jupyterlab/jupyterlab/tree/master
 
 Inspired by Gnome Shell Top Bar indicators.
 
-![screencast](./doc/screencast.gif)
+![a screenshot of the topbar extensions in JupyterLab](https://github.com/jupyterlab-contrib/jupyterlab-topbar/assets/591645/b620d58e-869d-4b8a-9e7c-47143116cc99)
 
 ### Extensions
 

@@ -83,5 +83,8 @@
     "extension": true,
     "schemaDir": "schema",
     "outputDir": "jupyterlab_theme_toggler/labextension"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -2,6 +2,54 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 1.0.0
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-topbar/compare/0.6.1...78c0d9d44999357adcee08a8fe09370cea537a64))
+
+### Enhancements made
+
+- Upgrade topbar extensions to JupyterLab 4 [#92](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/92) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+
+### Maintenance and upkeep improvements
+
+- Add `publishConfig` to `package.json` [#111](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/111) ([@jtpio](https://github.com/jtpio))
+- Fix `jupyterlab_theme_toggler` in `python-package` config [#109](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/109) ([@jtpio](https://github.com/jtpio))
+- Move populate-release step to prep-release workflow [#108](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/108) ([@jtpio](https://github.com/jtpio))
+- Update releaser artifact name [#100](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/100) ([@jtpio](https://github.com/jtpio))
+- Bump url-parse from 1.5.7 to 1.5.10 [#78](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/78) ([@dependabot](https://github.com/dependabot))
+- Bump url-parse from 1.5.3 to 1.5.7 [#77](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/77) ([@dependabot](https://github.com/dependabot))
+- Bump node-fetch from 2.6.1 to 2.6.7 [#76](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/76) ([@dependabot](https://github.com/dependabot))
+- Bump trim-off-newlines from 1.0.1 to 1.0.3 [#75](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/75) ([@dependabot](https://github.com/dependabot))
+- Move `jupyterlab-topbar-text` to another repo [#73](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/73) ([@jtpio](https://github.com/jtpio))
+
+### Documentation improvements
+
+- Update README [#112](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/112) ([@jtpio](https://github.com/jtpio))
+
+### Other merged PRs
+
+- Bump ip from 2.0.0 to 2.0.1 [#107](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/107) ([@dependabot](https://github.com/dependabot))
+- Bump axios from 1.4.0 to 1.6.2 [#104](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/104) ([@dependabot](https://github.com/dependabot))
+- Bump postcss from 8.4.24 to 8.4.31 [#102](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/102) ([@dependabot](https://github.com/dependabot))
+- Move jupyter-releaser config to package.json [#101](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/101) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Add top level python package to jupyter-releaser pkgs [#99](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/99) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump semver from 5.7.1 to 5.7.2 [#97](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/97) ([@dependabot](https://github.com/dependabot))
+- Bump word-wrap from 1.2.3 to 1.2.5 [#96](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/96) ([@dependabot](https://github.com/dependabot))
+- Add jupyter releaser workflows [#95](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/95) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Fix binder launch [#93](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/93) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump nanoid from 3.1.23 to 3.2.0 [#74](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/74) ([@dependabot](https://github.com/dependabot))
+- Bump url-parse from 1.5.1 to 1.5.3 [#71](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/71) ([@dependabot](https://github.com/dependabot))
+- Bump tar from 4.4.15 to 4.4.19 [#70](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/70) ([@dependabot](https://github.com/dependabot))
+- Bump tar from 4.4.13 to 4.4.15 [#69](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/69) ([@dependabot](https://github.com/dependabot))
+- Update after the move to `jupyterlab-contrib` [#67](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/67) ([@jtpio](https://github.com/jtpio))
+- Bump ws from 7.4.0 to 7.4.6 [#66](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/66) ([@dependabot](https://github.com/dependabot))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-topbar/graphs/contributors?from=2021-02-04&to=2024-02-21&type=c))
+
+[@dependabot](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Adependabot+updated%3A2021-02-04..2024-02-21&type=Issues) | [@jtpio](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Ajtpio+updated%3A2021-02-04..2024-02-21&type=Issues) | [@mahendrapaipuri](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Amahendrapaipuri+updated%3A2021-02-04..2024-02-21&type=Issues)
+
 <!-- <END NEW CHANGELOG ENTRY> -->
 
 ## 0.6.1

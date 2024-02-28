@@ -37,15 +37,6 @@ jobs:
           since: ${{ github.event.inputs.since }}
           since_last_stable: ${{ github.event.inputs.since_last_stable }}
 
-      - name: Populate Release
-        id: populate-release
-        uses: jupyter-server/jupyter_releaser/.github/actions/populate-release@v2
-        with:
-          token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
-          branch: ${{ github.event.inputs.branch }}
-          release_url: ${{ steps.prep-release.outputs.release_url }}
-          steps_to_skip: ${{ github.event.inputs.steps_to_skip }}
-
       - name: "** Next Step **"
         run: |
-          echo "Optional): Review Draft Release: ${{ steps.populate-release.outputs.release_url }}" 
+          echo "Optional): Review Draft Release: ${{ steps.prep-release.outputs.release_url }}" 

@@ -60,6 +60,9 @@
       "tag-message": "[ci skip] Release {tag_name}"
     },
     "hooks": {
+      "after-bump-version": [
+        "python ./scripts/bump-top-level-package.py"
+      ],
       "before-build-npm": [
         "pip install 'jupyterlab>=4.0.0,<5'",
         "jlpm",

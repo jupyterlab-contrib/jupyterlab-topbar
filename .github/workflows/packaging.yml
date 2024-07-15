@@ -85,6 +85,11 @@ jobs:
             py_cmd: python3
           - os: ubuntu
             py_cmd: python
+        # actions/setup-python do not support MacOS runners based on ARM for Python < 3.11
+        # https://github.com/actions/setup-python/issues/906
+        exclude:
+          - os: macos
+            python: 3.8
 
     steps:
       - name: Install Python
@@ -97,6 +102,12 @@ jobs:
         with:
           name: extension-artifacts
           path: packages/${{ matrix.extension }}-extension/dist
+
+      - name: Create venv for macos
+        if: ${{ matrix.os == 'macos' }}
+        run: |
+          ${{ matrix.py_cmd }} -m venv venv
+          source ./venv/bin/activate
 
       - name: Install prerequisites
         run: |

@@ -55,7 +55,7 @@
     "watch:src": "tsc -w --sourceMap"
   },
   "dependencies": {
-    "@jupyter/react-components": "^0.16.4",
+    "@jupyter/react-components": "^0.15.3",
     "@jupyterlab/application": "^4.0.0",
     "@jupyterlab/apputils": "^4.0.0",
     "react": "^18.2.0"

@@ -1,10 +1,4 @@
-import {
-  FocusStyleManager,
-  Switch,
-  SwitchProps as ISwitchProps,
-} from '@blueprintjs/core';
-
-import '@blueprintjs/core/lib/css/blueprint.css';
+import { Switch } from '@jupyter/react-components';
 
 import {
   JupyterFrontEnd,
@@ -15,62 +9,11 @@ import { IThemeManager, IToolbarWidgetRegistry } from '@jupyterlab/apputils';
 
 import { ReactWidget } from '@jupyterlab/ui-components';
 
-import { useState, useEffect } from 'react';
-
 import * as React from 'react';
 
 import '../style/index.css';
 
 const themeTogglerPluginId = 'jupyterlab-theme-toggler:plugin';
-
-FocusStyleManager.onlyShowFocusOnTabs();
-
-interface IThemeSwitchProps extends ISwitchProps {
-  title?: string;
-  themeManager: IThemeManager;
-  dark?: boolean;
-}
-
-const ThemeSwitch = (props: IThemeSwitchProps) => {
-  const { themeManager, ...others } = props;
-
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    setDark(!!props.dark);
-  }, [props.dark]);
-
-  const updateChecked = () => {
-    const isDark = !themeManager.isLight(themeManager.theme);
-    setDark(!!isDark);
-  };
-
-  useEffect(() => {
-    let timeout = 0;
-    if (!themeManager.theme) {
-      // TODO: investigate why the themeManager is undefined
-      timeout = setTimeout(() => {
-        updateChecked();
-      }, 500);
-    } else {
-      updateChecked();
-    }
-    themeManager.themeChanged.connect(updateChecked);
-
-    return () => {
-      clearTimeout(timeout);
-      themeManager.themeChanged.disconnect(updateChecked);
-    };
-  });
-
-  return (
-    <Switch
-      {...others}
-      checked={dark}
-      className={props.className + ' jp-Switch'}
-    />
-  );
-};
 
 const extension: JupyterFrontEndPlugin<void> = {
   id: themeTogglerPluginId,
@@ -102,12 +45,11 @@ const extension: JupyterFrontEndPlugin<void> = {
     if (toolbarRegistry) {
       toolbarRegistry.addFactory('TopBar', 'theme-toggler', () => {
         const widget = ReactWidget.create(
-          <ThemeSwitch
-            themeManager={themeManager}
-            onChange={onChange}
-            innerLabel="light"
-            innerLabelChecked="dark"
-          />
+          <Switch onChange={onChange} checked={true}>
+            Theme
+            <span slot="checked-message">Light</span>
+            <span slot="unchecked-message">Dark</span>
+          </Switch>
         );
         return widget;
       });

@@ -104,17 +104,17 @@ jobs:
           path: packages/${{ matrix.extension }}-extension/dist
 
       - name: Create venv for macos
-        if: ${{ matrix.os == 'macos' }}
         run: |
           ${{ matrix.py_cmd }} -m venv venv
-          source ./venv/bin/activate
 
       - name: Install prerequisites
         run: |
+          source ./venv/bin/activate
           ${{ matrix.py_cmd }} -m pip install pip wheel
 
       - name: Install package
         run: |
+          source ./venv/bin/activate
           cd packages/${{ matrix.extension }}-extension/dist
           ${{ matrix.py_cmd }} -m pip install -vv ${{ matrix.dist }}
 
@@ -125,5 +125,6 @@ jobs:
 
       - name: Validate install
         run: |
+          source ./venv/bin/activate
           jupyter labextension list
           jupyter labextension list 2>&1 | grep -ie "jupyterlab-${{ matrix.extension }}.*OK"

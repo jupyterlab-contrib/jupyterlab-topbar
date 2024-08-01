@@ -48,7 +48,7 @@ jobs:
     - name: Upload extension packages
       uses: actions/upload-artifact@v4
       with:
-        name: extension-artifacts
+        name: ${{ matrix.extension }}-extension-artifacts
         path: packages/${{ matrix.extension }}-extension/dist/jupyterlab_${{ matrix.name }}*
         if-no-files-found: error
 
@@ -100,7 +100,7 @@ jobs:
 
       - uses: actions/download-artifact@v4
         with:
-          name: extension-artifacts
+          name: ${{ matrix.extension }}-extension-artifacts
           path: packages/${{ matrix.extension }}-extension/dist
 
       # Seems like we need to create a virtual env for MacOS runners as they are 

@@ -29,7 +29,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Base Setup
       uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
@@ -46,7 +46,7 @@ jobs:
         pip uninstall -y "jupyterlab_${{ matrix.name }}" jupyterlab
 
     - name: Upload extension packages
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: extension-artifacts
         path: packages/${{ matrix.extension }}-extension/dist/jupyterlab_${{ matrix.name }}*
@@ -93,17 +93,20 @@ jobs:
 
     steps:
       - name: Install Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
           architecture: 'x64'
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: extension-artifacts
           path: packages/${{ matrix.extension }}-extension/dist
 
-      - name: Create venv for macos
+      # Seems like we need to create a virtual env for MacOS runners as they are 
+      # based on ARM now. To avoid conditional logic, we create vritual envs for all
+      # OS types
+      - name: Create venv
         run: |
           ${{ matrix.py_cmd }} -m venv venv
 

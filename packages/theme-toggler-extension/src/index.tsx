@@ -1,10 +1,4 @@
-import {
-  FocusStyleManager,
-  Switch,
-  SwitchProps as ISwitchProps,
-} from '@blueprintjs/core';
-
-import '@blueprintjs/core/lib/css/blueprint.css';
+import { Switch } from '@jupyter/react-components';
 
 import {
   JupyterFrontEnd,
@@ -23,22 +17,15 @@ import '../style/index.css';
 
 const themeTogglerPluginId = 'jupyterlab-theme-toggler:plugin';
 
-FocusStyleManager.onlyShowFocusOnTabs();
-
-interface IThemeSwitchProps extends ISwitchProps {
-  title?: string;
+interface IThemeSwitchProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   themeManager: IThemeManager;
-  dark?: boolean;
 }
 
 const ThemeSwitch = (props: IThemeSwitchProps) => {
   const { themeManager, ...others } = props;
 
   const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    setDark(!!props.dark);
-  }, [props.dark]);
 
   const updateChecked = () => {
     const isDark = !themeManager.isLight(themeManager.theme);
@@ -56,20 +43,13 @@ const ThemeSwitch = (props: IThemeSwitchProps) => {
       updateChecked();
     }
     themeManager.themeChanged.connect(updateChecked);
-
     return () => {
       clearTimeout(timeout);
       themeManager.themeChanged.disconnect(updateChecked);
     };
   });
 
-  return (
-    <Switch
-      {...others}
-      checked={dark}
-      className={props.className + ' jp-Switch'}
-    />
-  );
+  return <Switch {...others} aria-checked={dark} />;
 };
 
 const extension: JupyterFrontEndPlugin<void> = {
@@ -102,12 +82,10 @@ const extension: JupyterFrontEndPlugin<void> = {
     if (toolbarRegistry) {
       toolbarRegistry.addFactory('TopBar', 'theme-toggler', () => {
         const widget = ReactWidget.create(
-          <ThemeSwitch
-            themeManager={themeManager}
-            onChange={onChange}
-            innerLabel="light"
-            innerLabelChecked="dark"
-          />
+          <ThemeSwitch themeManager={themeManager} onChange={onChange}>
+            <span slot="unchecked-message">Light</span>
+            <span slot="checked-message">Dark</span>
+          </ThemeSwitch>
         );
         return widget;
       });

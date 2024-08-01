@@ -9,11 +9,48 @@ import { IThemeManager, IToolbarWidgetRegistry } from '@jupyterlab/apputils';
 
 import { ReactWidget } from '@jupyterlab/ui-components';
 
+import { useState, useEffect } from 'react';
+
 import * as React from 'react';
 
 import '../style/index.css';
 
 const themeTogglerPluginId = 'jupyterlab-theme-toggler:plugin';
+
+interface IThemeSwitchProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  themeManager: IThemeManager;
+}
+
+const ThemeSwitch = (props: IThemeSwitchProps) => {
+  const { themeManager, ...others } = props;
+
+  const [dark, setDark] = useState(false);
+
+  const updateChecked = () => {
+    const isDark = !themeManager.isLight(themeManager.theme);
+    setDark(!!isDark);
+  };
+
+  useEffect(() => {
+    let timeout = 0;
+    if (!themeManager.theme) {
+      // TODO: investigate why the themeManager is undefined
+      timeout = setTimeout(() => {
+        updateChecked();
+      }, 500);
+    } else {
+      updateChecked();
+    }
+    themeManager.themeChanged.connect(updateChecked);
+    return () => {
+      clearTimeout(timeout);
+      themeManager.themeChanged.disconnect(updateChecked);
+    };
+  });
+
+  return <Switch {...others} aria-checked={dark} />;
+};
 
 const extension: JupyterFrontEndPlugin<void> = {
   id: themeTogglerPluginId,
@@ -45,11 +82,10 @@ const extension: JupyterFrontEndPlugin<void> = {
     if (toolbarRegistry) {
       toolbarRegistry.addFactory('TopBar', 'theme-toggler', () => {
         const widget = ReactWidget.create(
-          <Switch onChange={onChange} checked={true}>
-            Theme
-            <span slot="checked-message">Light</span>
-            <span slot="unchecked-message">Dark</span>
-          </Switch>
+          <ThemeSwitch themeManager={themeManager} onChange={onChange}>
+            <span slot="unchecked-message">Light</span>
+            <span slot="checked-message">Dark</span>
+          </ThemeSwitch>
         );
         return widget;
       });

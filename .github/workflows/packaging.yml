@@ -29,7 +29,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Base Setup
       uses: jupyterlab/maintainer-tools/.github/actions/base-setup@v1
@@ -46,9 +46,9 @@ jobs:
         pip uninstall -y "jupyterlab_${{ matrix.name }}" jupyterlab
 
     - name: Upload extension packages
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
-        name: extension-artifacts
+        name: ${{ matrix.extension }}-extension-artifacts
         path: packages/${{ matrix.extension }}-extension/dist/jupyterlab_${{ matrix.name }}*
         if-no-files-found: error
 
@@ -85,25 +85,39 @@ jobs:
             py_cmd: python3
           - os: ubuntu
             py_cmd: python
+        # actions/setup-python do not support MacOS runners based on ARM for Python < 3.11
+        # https://github.com/actions/setup-python/issues/906
+        exclude:
+          - os: macos
+            python: 3.8
 
     steps:
       - name: Install Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
           architecture: 'x64'
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
-          name: extension-artifacts
+          name: ${{ matrix.extension }}-extension-artifacts
           path: packages/${{ matrix.extension }}-extension/dist
+
+      # Seems like we need to create a virtual env for MacOS runners as they are 
+      # based on ARM now. To avoid conditional logic, we create vritual envs for all
+      # OS types
+      - name: Create venv
+        run: |
+          ${{ matrix.py_cmd }} -m venv venv
 
       - name: Install prerequisites
         run: |
+          source ./venv/bin/activate
           ${{ matrix.py_cmd }} -m pip install pip wheel
 
       - name: Install package
         run: |
+          source ./venv/bin/activate
           cd packages/${{ matrix.extension }}-extension/dist
           ${{ matrix.py_cmd }} -m pip install -vv ${{ matrix.dist }}
 
@@ -114,5 +128,6 @@ jobs:
 
       - name: Validate install
         run: |
+          source ./venv/bin/activate
           jupyter labextension list
           jupyter labextension list 2>&1 | grep -ie "jupyterlab-${{ matrix.extension }}.*OK"

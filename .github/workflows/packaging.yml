@@ -85,11 +85,11 @@ jobs:
             py_cmd: python3
           - os: ubuntu
             py_cmd: python
-        # # actions/setup-python do not support MacOS runners based on ARM for Python < 3.13
-        # # https://github.com/actions/setup-python/issues/906
-        # exclude:
-        #   - os: macos
-        #     python: 3.9
+        # actions/setup-python do not support MacOS runners based on ARM for Python < 3.13
+        # https://github.com/actions/setup-python/issues/906
+        exclude:
+          - os: macos
+            python: 3.9
 
     steps:
       - name: Install Python

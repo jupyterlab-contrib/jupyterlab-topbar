@@ -1,4 +1,4 @@
-import { Switch } from '@jupyter/react-components';
+import { Switch, SwitchProps } from '@jupyter/react-components';
 
 import {
   JupyterFrontEnd,
@@ -17,8 +17,7 @@ import '../style/index.css';
 
 const themeTogglerPluginId = 'jupyterlab-theme-toggler:plugin';
 
-interface IThemeSwitchProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+interface IThemeSwitchProps extends SwitchProps {
   themeManager: IThemeManager;
 }
 

@@ -59,24 +59,24 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu, macos, windows]
-        python: ['3.8', '3.11']
+        python: ['3.9', '3.13']
         include:
-          - python: '3.8'
+          - python: '3.9'
             extension: logout
             dist: 'jupyterlab_logout*.tar.gz'
-          - python: '3.11'
+          - python: '3.13'
             extension: logout
             dist: 'jupyterlab_logout*.whl'
-          - python: '3.8'
+          - python: '3.9'
             extension: theme-toggler
             dist: 'jupyterlab_theme_toggler*.tar.gz'
-          - python: '3.11'
+          - python: '3.13'
             extension: theme-toggler
             dist: 'jupyterlab_theme_toggler*.whl'
-          - python: '3.8'
+          - python: '3.9'
             extension: topbar-text
             dist: 'jupyterlab_topbar_text*.tar.gz'
-          - python: '3.11'
+          - python: '3.13'
             extension: topbar-text
             dist: 'jupyterlab_topbar_text*.whl'
           - os: windows
@@ -85,11 +85,11 @@ jobs:
             py_cmd: python3
           - os: ubuntu
             py_cmd: python
-        # actions/setup-python do not support MacOS runners based on ARM for Python < 3.11
+        # actions/setup-python do not support MacOS runners based on ARM for Python < 3.13
         # https://github.com/actions/setup-python/issues/906
         exclude:
           - os: macos
-            python: 3.8
+            python: 3.9
 
     steps:
       - name: Install Python

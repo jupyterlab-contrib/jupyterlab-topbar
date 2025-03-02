@@ -40,6 +40,11 @@
     "stylelint-config-standard": "^26.0.0",
     "stylelint-prettier": "^2.0.0"
   },
+  "resolutions": {
+    "semver": "7.5.2",
+    "@octokit/request": "8.4.1",
+    "tar": "6.1.11"
+  },
   "jupyter-releaser": {
     "options": {
       "dist-dir": "dist",

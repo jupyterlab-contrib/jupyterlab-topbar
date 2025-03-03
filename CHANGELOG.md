@@ -2,6 +2,34 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 1.1.0
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-topbar/compare/jupyterlab-logout@1.0.0...dde7b1068c2ec8a332583b3ef6fa7918a4b047be))
+
+### Maintenance and upkeep improvements
+
+- Update release workflows from jupyter-releaser repo [#133](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/133) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Update `requires-python` in pyproject.toml to 3.9 [#132](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/132) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump npm packages reported in security updates [#131](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/131) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Update switch component and maintenance [#130](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/130) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Add binder config [#128](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/128) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Migrate to jupyter-ui-toolkit for Switch component [#127](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/127) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Revert "Move populate-release step to prep-release workflow" [#120](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/120) ([@jtpio](https://github.com/jtpio))
+- Normalize Python packages names [#119](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/119) ([@jtpio](https://github.com/jtpio))
+
+### Other merged PRs
+
+- Add script to auto bump version in top level [#122](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/122) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump follow-redirects from 1.15.2 to 1.15.6 [#121](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/121) ([@dependabot](https://github.com/dependabot))
+
+### Contributors to this release
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-topbar/graphs/contributors?from=2024-02-21&to=2025-03-03&type=c))
+
+[@dependabot](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Adependabot+updated%3A2024-02-21..2025-03-03&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Agithub-actions+updated%3A2024-02-21..2025-03-03&type=Issues) | [@jtpio](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Ajtpio+updated%3A2024-02-21..2025-03-03&type=Issues) | [@mahendrapaipuri](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Amahendrapaipuri+updated%3A2024-02-21..2025-03-03&type=Issues)
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 1.0.0
 
 ([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-topbar/compare/0.6.1...78c0d9d44999357adcee08a8fe09370cea537a64))
@@ -49,8 +77,6 @@
 ([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-topbar/graphs/contributors?from=2021-02-04&to=2024-02-21&type=c))
 
 [@dependabot](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Adependabot+updated%3A2021-02-04..2024-02-21&type=Issues) | [@jtpio](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Ajtpio+updated%3A2021-02-04..2024-02-21&type=Issues) | [@mahendrapaipuri](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Amahendrapaipuri+updated%3A2021-02-04..2024-02-21&type=Issues)
-
-<!-- <END NEW CHANGELOG ENTRY> -->
 
 ## 0.6.1
 

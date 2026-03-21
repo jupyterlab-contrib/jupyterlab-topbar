@@ -123,6 +123,7 @@ jobs:
 
       - name: Validate environment
         run: |
+          source ./venv/bin/activate
           ${{ matrix.py_cmd }} -m pip freeze
           ${{ matrix.py_cmd }} -m pip check
 

@@ -10,8 +10,6 @@ import {
   IToolbarWidgetRegistry,
 } from '@jupyterlab/apputils';
 
-import { PathExt } from '@jupyterlab/coreutils';
-
 import { ISettingRegistry } from '@jupyterlab/settingregistry';
 
 import { Widget } from '@lumino/widgets';
@@ -102,11 +100,10 @@ const extension: JupyterFrontEndPlugin<void> = {
 };
 
 class EditHandler extends Widget {
-  constructor(oldPath: string) {
-    super({ node: Private.createEditNode(oldPath) });
-    const ext = PathExt.extname(oldPath);
-    const value = (this.inputNode.value = PathExt.basename(oldPath));
-    this.inputNode.setSelectionRange(0, value.length - ext.length);
+  constructor(oldText: string) {
+    super({ node: Private.createEditNode(oldText) });
+    this.inputNode.value = oldText;
+    this.inputNode.select();
   }
 
   get inputNode(): HTMLInputElement {
@@ -123,15 +120,15 @@ namespace Private {
     const body = document.createElement('div');
     const existingLabel = document.createElement('label');
     existingLabel.textContent = 'Old Text';
-    const existingPath = document.createElement('span');
-    existingPath.textContent = oldText;
+    const existingText = document.createElement('span');
+    existingText.textContent = oldText;
 
     const nameTitle = document.createElement('label');
     nameTitle.textContent = 'New Text';
     const name = document.createElement('input');
 
     body.appendChild(existingLabel);
-    body.appendChild(existingPath);
+    body.appendChild(existingText);
     body.appendChild(nameTitle);
     body.appendChild(name);
     return body;

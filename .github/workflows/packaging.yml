@@ -59,24 +59,24 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu, macos, windows]
-        python: ['3.9', '3.13']
+        python: ['3.11', '3.15']
         include:
-          - python: '3.9'
+          - python: '3.11'
             extension: logout
             dist: 'jupyterlab_logout*.tar.gz'
-          - python: '3.13'
+          - python: '3.15'
             extension: logout
             dist: 'jupyterlab_logout*.whl'
-          - python: '3.9'
+          - python: '3.11'
             extension: theme-toggler
             dist: 'jupyterlab_theme_toggler*.tar.gz'
-          - python: '3.13'
+          - python: '3.15'
             extension: theme-toggler
             dist: 'jupyterlab_theme_toggler*.whl'
-          - python: '3.9'
+          - python: '3.11'
             extension: topbar-text
             dist: 'jupyterlab_topbar_text*.tar.gz'
-          - python: '3.13'
+          - python: '3.15'
             extension: topbar-text
             dist: 'jupyterlab_topbar_text*.whl'
           - os: windows
@@ -89,7 +89,7 @@ jobs:
         # https://github.com/actions/setup-python/issues/906
         exclude:
           - os: macos
-            python: 3.9
+            python: 3.11
 
     steps:
       - name: Install Python

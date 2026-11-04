@@ -1,6 +1,6 @@
 {
-  "title": "User Menu Bar",
-  "description": "User Menu Bar settings.",
+  "title": "Theme Toggler",
+  "description": "Theme Toggler settings.",
   "jupyter.lab.toolbars": {
     "TopBar": [
       {

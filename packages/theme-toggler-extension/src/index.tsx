@@ -5,9 +5,11 @@ import {
   JupyterFrontEndPlugin,
 } from '@jupyterlab/application';
 
-import { IThemeManager, IToolbarWidgetRegistry } from '@jupyterlab/apputils';
-
-import { ReactWidget } from '@jupyterlab/ui-components';
+import {
+  IThemeManager,
+  IToolbarWidgetRegistry,
+  ReactWidget,
+} from '@jupyterlab/apputils';
 
 import { useState, useEffect } from 'react';
 
@@ -16,6 +18,7 @@ import * as React from 'react';
 import '../style/index.css';
 
 const themeTogglerPluginId = 'jupyterlab-theme-toggler:plugin';
+const THEME_TOGGLER_CLASS = 'jp-ThemeToggler';
 
 interface IThemeSwitchProps extends SwitchProps {
   themeManager: IThemeManager;
@@ -46,9 +49,9 @@ const ThemeSwitch = (props: IThemeSwitchProps) => {
       clearTimeout(timeout);
       themeManager.themeChanged.disconnect(updateChecked);
     };
-  });
+  }, [themeManager]);
 
-  return <Switch {...others} aria-checked={dark} />;
+  return <Switch {...others} checked={dark} aria-checked={dark} />;
 };
 
 const extension: JupyterFrontEndPlugin<void> = {
@@ -86,6 +89,7 @@ const extension: JupyterFrontEndPlugin<void> = {
             <span slot="checked-message">Dark</span>
           </ThemeSwitch>
         );
+        widget.addClass(THEME_TOGGLER_CLASS);
         return widget;
       });
     }

@@ -2,6 +2,53 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 1.1.1
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-topbar/compare/jupyterlab-logout@1.1.0...15f96ceecdd4361ea9ac7e2cc94effaee3fdfa04))
+
+### Merged PRs
+
+- Bump proxy-addr from 2.0.7 to 2.0.8 [#170](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/170) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- build (deps): Bump npm deps and Py versions in pyproject.toml [#169](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/169) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump postcss-selector-parser from 6.1.2 to 6.1.5 [#168](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/168) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Fix text editing dialog and remove unused PathExt in topbar-text [#166](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/166) ([@Yash990-bit](https://github.com/Yash990-bit), [@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump source-map-js from 1.2.1 to 1.2.2 [#163](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/163) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump axios from 1.18.1 to 1.21.0 [#162](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/162) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump nanoid from 3.3.8 to 3.3.20 [#159](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/159) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump fast-uri from 3.1.4 to 3.1.5 [#158](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/158) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump shell-quote from 1.8.4 to 1.10.0 [#157](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/157) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump postcss from 8.5.14 to 8.5.23 [#156](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/156) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump fast-uri from 3.1.2 to 3.1.4 [#155](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/155) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump brace-expansion from 1.1.11 to 1.1.16 [#154](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/154) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump axios from 1.16.0 to 1.18.1 [#153](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/153) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump form-data from 4.0.5 to 4.0.6 [#152](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/152) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump shell-quote from 1.8.2 to 1.8.4 [#151](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/151) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump ws from 8.18.1 to 8.21.0 [#150](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/150) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump @tootallnate/once from 2.0.0 to 2.0.1 [#149](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/149) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump fast-uri from 3.0.6 to 3.1.2 [#148](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/148) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump postcss from 8.5.3 to 8.5.14 [#147](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/147) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump axios from 1.11.0 to 1.16.0 [#146](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/146) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump lodash-es from 4.17.23 to 4.18.1 [#143](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/143) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump picomatch from 2.3.1 to 2.3.2 [#142](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/142) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump flatted from 3.3.3 to 3.4.2 [#141](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/141) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump webpack from 5.98.0 to 5.105.0 [#140](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/140) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump lodash-es from 4.17.21 to 4.17.23 [#139](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/139) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump jws from 3.2.2 to 3.2.3 [#138](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/138) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump axios from 1.10.0 to 1.11.0 [#137](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/137) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump axios from 1.8.1 to 1.10.0 [#136](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/136) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Bump form-data from 4.0.2 to 4.0.4 [#135](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/135) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+
+### Contributors to this release
+
+The following people contributed discussions, new ideas, code and documentation contributions, and review.
+See [our definition of contributors](https://github-activity.readthedocs.io/en/latest/use/#how-does-this-tool-define-contributions-in-the-reports).
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-topbar/graphs/contributors?from=2025-03-03&to=2026-11-04&type=c))
+
+@mahendrapaipuri ([activity](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Amahendrapaipuri+updated%3A2025-03-03..2026-11-04&type=Issues)) | @Yash990-bit ([activity](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3AYash990-bit+updated%3A2025-03-03..2026-11-04&type=Issues))
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 1.1.0
 
 ([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-topbar/compare/jupyterlab-logout@1.0.0...dde7b1068c2ec8a332583b3ef6fa7918a4b047be))
@@ -27,8 +74,6 @@
 ([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-topbar/graphs/contributors?from=2024-02-21&to=2025-03-03&type=c))
 
 [@dependabot](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Adependabot+updated%3A2024-02-21..2025-03-03&type=Issues) | [@github-actions](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Agithub-actions+updated%3A2024-02-21..2025-03-03&type=Issues) | [@jtpio](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Ajtpio+updated%3A2024-02-21..2025-03-03&type=Issues) | [@mahendrapaipuri](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Amahendrapaipuri+updated%3A2024-02-21..2025-03-03&type=Issues)
-
-<!-- <END NEW CHANGELOG ENTRY> -->
 
 ## 1.0.0
 

@@ -1,4 +1,4 @@
-/* To increase the slider size */
-.jp-Toolbar .jp-Toolbar-item {
+/* To increase the slider size for the theme toggler */
+.jp-ThemeToggler {
   --density: 0;
 }

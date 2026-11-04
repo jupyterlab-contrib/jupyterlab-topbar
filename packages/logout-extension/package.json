@@ -55,7 +55,8 @@
         "watch:src": "tsc -w --sourceMap"
     },
     "dependencies": {
-        "@jupyterlab/application": "^4.0.0"
+        "@jupyterlab/application": "^4.0.0",
+        "@jupyterlab/coreutils": "^6.0.0"
     },
     "devDependencies": {
         "@jupyter/builder": "^1.2.0",

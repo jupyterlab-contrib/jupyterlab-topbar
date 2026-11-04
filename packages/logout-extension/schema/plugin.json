@@ -1,6 +1,6 @@
 {
-  "title": "User Menu Bar",
-  "description": "User Menu Bar settings.",
+  "title": "Log Out",
+  "description": "Log Out button settings.",
   "jupyter.lab.toolbars": {
     "TopBar": [
       {

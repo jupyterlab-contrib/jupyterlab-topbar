@@ -432,7 +432,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/coreutils@npm:^6.3.5":
+"@jupyterlab/coreutils@npm:^6.0.0, @jupyterlab/coreutils@npm:^6.3.5":
   version: 6.3.5
   resolution: "@jupyterlab/coreutils@npm:6.3.5"
   dependencies:
@@ -7073,6 +7073,7 @@ __metadata:
   dependencies:
     "@jupyter/builder": ^1.2.0
     "@jupyterlab/application": ^4.0.0
+    "@jupyterlab/coreutils": ^6.0.0
     "@typescript-eslint/eslint-plugin": ^5.55.0
     "@typescript-eslint/parser": ^5.55.0
     eslint: ^8.36.0

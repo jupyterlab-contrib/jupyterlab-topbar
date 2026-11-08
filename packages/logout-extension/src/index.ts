@@ -4,6 +4,8 @@ import {
   IRouter,
 } from '@jupyterlab/application';
 
+import { PageConfig, URLExt } from '@jupyterlab/coreutils';
+
 import '@jupyterlab/application/style/buttons.css';
 
 import '../style/index.css';
@@ -13,8 +15,11 @@ const logoutPluginId = 'jupyterlab-logout:plugin';
 const extension: JupyterFrontEndPlugin<void> = {
   id: logoutPluginId,
   autoStart: true,
-  requires: [IRouter],
-  activate: async (app: JupyterFrontEnd, router: IRouter): Promise<void> => {
+  optional: [IRouter],
+  activate: async (
+    app: JupyterFrontEnd,
+    router: IRouter | null
+  ): Promise<void> => {
     console.log('jupyterlab-logout extension is activated!');
 
     // Get app commands
@@ -25,8 +30,17 @@ const extension: JupyterFrontEndPlugin<void> = {
 
     commands.addCommand(command, {
       label: 'Log Out',
-      execute: (args: any) => {
-        router.navigate('/logout', { hard: true });
+      execute: async (args: any) => {
+        if (commands.hasCommand('hub:logout')) {
+          await commands.execute('hub:logout');
+          return;
+        }
+
+        const logoutUrl =
+          PageConfig.getOption('logoutUrl') ||
+          URLExt.join(PageConfig.getBaseUrl(), 'logout');
+
+        window.location.href = logoutUrl;
       },
     });
   },

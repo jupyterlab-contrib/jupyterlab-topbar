@@ -2,6 +2,27 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
+## 1.1.2
+
+([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-topbar/compare/v1.1.1...c8471ecb82c1922e74ca8e5f739b496dcfff7cc9))
+
+### Merged PRs
+
+- Bump minimatch from 3.1.2 to 3.1.5 [#175](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/175) ([@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Fix global toolbar density styling and theme switch state in theme-toggler [#174](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/174) ([@Yash990-bit](https://github.com/Yash990-bit), [@mahendrapaipuri](https://github.com/mahendrapaipuri))
+- Fix logout navigation for custom base_url and JupyterHub [#173](https://github.com/jupyterlab-contrib/jupyterlab-topbar/pull/173) ([@Yash990-bit](https://github.com/Yash990-bit), [@mahendrapaipuri](https://github.com/mahendrapaipuri))
+
+### Contributors to this release
+
+The following people contributed discussions, new ideas, code and documentation contributions, and review.
+See [our definition of contributors](https://github-activity.readthedocs.io/en/latest/use/#how-does-this-tool-define-contributions-in-the-reports).
+
+([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-topbar/graphs/contributors?from=2026-11-04&to=2026-11-09&type=c))
+
+@mahendrapaipuri ([activity](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Amahendrapaipuri+updated%3A2026-11-04..2026-11-09&type=Issues)) | @Yash990-bit ([activity](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3AYash990-bit+updated%3A2026-11-04..2026-11-09&type=Issues))
+
+<!-- <END NEW CHANGELOG ENTRY> -->
+
 ## 1.1.1
 
 ([Full Changelog](https://github.com/jupyterlab-contrib/jupyterlab-topbar/compare/jupyterlab-logout@1.1.0...15f96ceecdd4361ea9ac7e2cc94effaee3fdfa04))
@@ -46,8 +67,6 @@ See [our definition of contributors](https://github-activity.readthedocs.io/en/l
 ([GitHub contributors page for this release](https://github.com/jupyterlab-contrib/jupyterlab-topbar/graphs/contributors?from=2025-03-03&to=2026-11-04&type=c))
 
 @mahendrapaipuri ([activity](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3Amahendrapaipuri+updated%3A2025-03-03..2026-11-04&type=Issues)) | @Yash990-bit ([activity](https://github.com/search?q=repo%3Ajupyterlab-contrib%2Fjupyterlab-topbar+involves%3AYash990-bit+updated%3A2025-03-03..2026-11-04&type=Issues))
-
-<!-- <END NEW CHANGELOG ENTRY> -->
 
 ## 1.1.0
 

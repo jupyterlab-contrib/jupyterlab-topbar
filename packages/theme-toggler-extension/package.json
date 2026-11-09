@@ -1,6 +1,6 @@
 {
     "name": "jupyterlab-theme-toggler",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "JupyterLab Toolbar Theme Toggler",
     "keywords": [
         "jupyter",

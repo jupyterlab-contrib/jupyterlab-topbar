@@ -7101,6 +7101,7 @@ __metadata:
     "@jupyter/react-components": ^0.17.0
     "@jupyterlab/application": ^4.0.0
     "@jupyterlab/apputils": ^4.0.0
+    "@jupyterlab/settingregistry": ^4.0.0
     "@typescript-eslint/eslint-plugin": ^5.55.0
     "@typescript-eslint/parser": ^5.55.0
     eslint: ^8.36.0

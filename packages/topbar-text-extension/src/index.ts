@@ -44,6 +44,14 @@ const extension: JupyterFrontEndPlugin<void> = {
     let editable = settings.get('editable').composite as boolean;
     const textNode = document.createElement('div');
     textNode.textContent = text;
+    textNode.title = editable ? 'Double-click to edit' : '';
+    textNode.dataset.editable = editable ? 'true' : 'false';
+
+    textNode.addEventListener('dblclick', () => {
+      if (editable) {
+        showUpdateTextDialog();
+      }
+    });
 
     toolbarRegistry.addFactory('TopBar', 'text', () => {
       const textWidget = new Widget({ node: textNode });
@@ -94,6 +102,8 @@ const extension: JupyterFrontEndPlugin<void> = {
         text = settings.get('text').composite as string;
         editable = settings.get('editable').composite as boolean;
         textNode.textContent = text;
+        textNode.title = editable ? 'Double-click to edit' : '';
+        textNode.dataset.editable = editable ? 'true' : 'false';
       });
     });
   },
@@ -118,14 +128,20 @@ class EditHandler extends Widget {
 namespace Private {
   export function createEditNode(oldText: string): HTMLElement {
     const body = document.createElement('div');
+    body.className = 'jp-TopBar-Text-dialog';
+
     const existingLabel = document.createElement('label');
+    existingLabel.className = 'jp-TopBar-Text-dialog-label';
     existingLabel.textContent = 'Old Text';
     const existingText = document.createElement('span');
+    existingText.className = 'jp-TopBar-Text-dialog-oldText';
     existingText.textContent = oldText;
 
     const nameTitle = document.createElement('label');
+    nameTitle.className = 'jp-TopBar-Text-dialog-label';
     nameTitle.textContent = 'New Text';
     const name = document.createElement('input');
+    name.className = 'jp-mod-styled jp-TopBar-Text-dialog-input';
 
     body.appendChild(existingLabel);
     body.appendChild(existingText);

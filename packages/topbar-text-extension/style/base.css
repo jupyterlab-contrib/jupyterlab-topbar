@@ -1,0 +1,35 @@
+.jp-TopBar-Text {
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.jp-TopBar-Text[data-editable='true'] {
+  cursor: pointer;
+}
+
+.jp-TopBar-Text-dialog {
+  display: flex;
+  flex-direction: column;
+}
+
+.jp-TopBar-Text-dialog-label {
+  font-weight: 600;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  color: var(--jp-ui-font-color1);
+}
+
+.jp-TopBar-Text-dialog-label:first-child {
+  margin-top: 0;
+}
+
+.jp-TopBar-Text-dialog-oldText {
+  color: var(--jp-ui-font-color2);
+  word-break: break-all;
+}
+
+.jp-TopBar-Text-dialog-input {
+  box-sizing: border-box;
+  width: 100%;
+}

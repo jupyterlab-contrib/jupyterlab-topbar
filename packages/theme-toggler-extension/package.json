@@ -58,6 +58,7 @@
         "@jupyter/react-components": "^0.17.0",
         "@jupyterlab/application": "^4.0.0",
         "@jupyterlab/apputils": "^4.0.0",
+        "@jupyterlab/settingregistry": "^4.0.0",
         "react": "^18.2.0"
     },
     "devDependencies": {

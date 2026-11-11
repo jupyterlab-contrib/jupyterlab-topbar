@@ -11,6 +11,8 @@ import {
   ReactWidget,
 } from '@jupyterlab/apputils';
 
+import { ISettingRegistry } from '@jupyterlab/settingregistry';
+
 import { useState, useEffect } from 'react';
 
 import * as React from 'react';
@@ -58,26 +60,47 @@ const extension: JupyterFrontEndPlugin<void> = {
   id: themeTogglerPluginId,
   autoStart: true,
   requires: [IThemeManager],
-  optional: [IToolbarWidgetRegistry],
+  optional: [IToolbarWidgetRegistry, ISettingRegistry],
   activate: async (
     app: JupyterFrontEnd,
     themeManager: IThemeManager,
-    toolbarRegistry: IToolbarWidgetRegistry
+    toolbarRegistry: IToolbarWidgetRegistry | null,
+    settingRegistry: ISettingRegistry | null
   ): Promise<void> => {
     console.log('jupyterlab-theme-toggler extension is activated!');
 
     // Get app commands
     const { commands } = app;
 
-    const themes = [
-      'JupyterLab Light', // Light Theme goes first
-      'JupyterLab Dark',
-    ];
+    let lightTheme = 'JupyterLab Light';
+    let darkTheme = 'JupyterLab Dark';
+
+    if (settingRegistry) {
+      try {
+        const settings = await settingRegistry.load(extension.id);
+        const updateSettings = () => {
+          lightTheme =
+            (settings.get('lightTheme').composite as string) ||
+            'JupyterLab Light';
+          darkTheme =
+            (settings.get('darkTheme').composite as string) ||
+            'JupyterLab Dark';
+        };
+        updateSettings();
+        settings.changed.connect(updateSettings);
+      } catch (reason) {
+        console.error(
+          `Failed to load settings for ${themeTogglerPluginId}`,
+          reason
+        );
+      }
+    }
 
     const onChange = async () => {
       const isLight = themeManager.isLight(themeManager.theme);
+      const nextTheme = isLight ? darkTheme : lightTheme;
       await commands.execute('apputils:change-theme', {
-        theme: themes[~~isLight],
+        theme: nextTheme,
       });
     };
 

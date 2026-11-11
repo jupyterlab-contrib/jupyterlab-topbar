@@ -9,7 +9,20 @@
       }
     ]
   },
-  "properties": {},
+  "properties": {
+    "lightTheme": {
+      "title": "Light Theme",
+      "description": "Name of the light theme to toggle to",
+      "default": "JupyterLab Light",
+      "type": "string"
+    },
+    "darkTheme": {
+      "title": "Dark Theme",
+      "description": "Name of the dark theme to toggle to",
+      "default": "JupyterLab Dark",
+      "type": "string"
+    }
+  },
   "additionalProperties": false,
   "type": "object"
 }

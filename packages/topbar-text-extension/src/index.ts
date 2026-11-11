@@ -12,6 +12,7 @@ import {
 
 import { ISettingRegistry } from '@jupyterlab/settingregistry';
 
+import { Message } from '@lumino/messaging';
 import { Widget } from '@lumino/widgets';
 
 import '../style/index.css';
@@ -56,6 +57,7 @@ const extension: JupyterFrontEndPlugin<void> = {
       showDialog({
         title: 'Edit Top Bar Text',
         body: new EditHandler(oldText),
+        focusNodeSelector: 'input',
         buttons: [Dialog.cancelButton(), Dialog.okButton({ label: 'Save' })],
       }).then((result) => {
         if (!result.button.accept) {
@@ -103,7 +105,6 @@ class EditHandler extends Widget {
   constructor(oldText: string) {
     super({ node: Private.createEditNode(oldText) });
     this.inputNode.value = oldText;
-    this.inputNode.select();
   }
 
   get inputNode(): HTMLInputElement {
@@ -112,6 +113,12 @@ class EditHandler extends Widget {
 
   getValue(): string {
     return this.inputNode.value;
+  }
+
+  protected onAfterAttach(msg: Message): void {
+    super.onAfterAttach(msg);
+    this.inputNode.focus();
+    this.inputNode.select();
   }
 }
 
